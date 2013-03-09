@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  title: MyString
+  start_datetime: 2013-03-09 14:39:52
+  end_datetime: 2013-03-09 14:39:52
+  people_num: 1
+  budget_hotel: 1.5
+  budget_meal: 1.5
+  option_transport: false
+  option_edit: false
+  option_pdf: false
+  option_booking: false
+  option_guide: false
+  option_qa: false
+
+two:
+  user_id: 1
+  title: MyString
+  start_datetime: 2013-03-09 14:39:52
+  end_datetime: 2013-03-09 14:39:52
+  people_num: 1
+  budget_hotel: 1.5
+  budget_meal: 1.5
+  option_transport: false
+  option_edit: false
+  option_pdf: false
+  option_booking: false
+  option_guide: false
+  option_qa: false

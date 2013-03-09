@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @request.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @request.title %>
+</p>
+
+<p>
+  <b>Start datetime:</b>
+  <%= @request.start_datetime %>
+</p>
+
+<p>
+  <b>End datetime:</b>
+  <%= @request.end_datetime %>
+</p>
+
+<p>
+  <b>People num:</b>
+  <%= @request.people_num %>
+</p>
+
+<p>
+  <b>Budget hotel:</b>
+  <%= @request.budget_hotel %>
+</p>
+
+<p>
+  <b>Budget meal:</b>
+  <%= @request.budget_meal %>
+</p>
+
+<p>
+  <b>Option transport:</b>
+  <%= @request.option_transport %>
+</p>
+
+<p>
+  <b>Option edit:</b>
+  <%= @request.option_edit %>
+</p>
+
+<p>
+  <b>Option pdf:</b>
+  <%= @request.option_pdf %>
+</p>
+
+<p>
+  <b>Option booking:</b>
+  <%= @request.option_booking %>
+</p>
+
+<p>
+  <b>Option guide:</b>
+  <%= @request.option_guide %>
+</p>
+
+<p>
+  <b>Option qa:</b>
+  <%= @request.option_qa %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

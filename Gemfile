@@ -14,11 +14,11 @@ group :test, :development do
   gem 'rspec'
 end
 
-#group :development do
-#  gem 'therubyracer', :platforms => :ruby
-#  gem 'less-rails'
-#  gem 'twitter-bootstrap-rails'
-#end
+group :development do
+  gem 'therubyracer', :platforms => :ruby
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
+end
 
 group :production do
   gem 'heroku'
