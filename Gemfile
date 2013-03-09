@@ -14,6 +14,12 @@ group :test, :development do
   gem 'rspec'
 end
 
+#group :development do
+#  gem 'therubyracer', :platforms => :ruby
+#  gem 'less-rails'
+#  gem 'twitter-bootstrap-rails'
+#end
+
 group :production do
   gem 'heroku'
   gem 'pg'
@@ -26,8 +32,6 @@ group :assets do
   gem 'compass-rails'
   gem 'sassy-buttons'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
