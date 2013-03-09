@@ -1,7 +1,8 @@
 SimpleList::Application.routes.draw do
   root :to => 'spots#index'
-  resources :spots
-
+  resources :spots do
+    post :sort, on: :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
