@@ -1,47 +1,62 @@
-<h1>Listing requests</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Start datetime</th>
-    <th>End datetime</th>
-    <th>People num</th>
-    <th>Budget hotel</th>
-    <th>Budget meal</th>
-    <th>Option transport</th>
-    <th>Option edit</th>
-    <th>Option pdf</th>
-    <th>Option booking</th>
-    <th>Option guide</th>
-    <th>Option qa</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @requests.each do |request| %>
-  <tr>
-    <td><%= request.user_id %></td>
-    <td><%= request.title %></td>
-    <td><%= request.start_datetime %></td>
-    <td><%= request.end_datetime %></td>
-    <td><%= request.people_num %></td>
-    <td><%= request.budget_hotel %></td>
-    <td><%= request.budget_meal %></td>
-    <td><%= request.option_transport %></td>
-    <td><%= request.option_edit %></td>
-    <td><%= request.option_pdf %></td>
-    <td><%= request.option_booking %></td>
-    <td><%= request.option_guide %></td>
-    <td><%= request.option_qa %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Request -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:username) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:start_datetime) %></th>
+      <th><%= model_class.human_attribute_name(:end_datetime) %></th>
+      <th><%= model_class.human_attribute_name(:people_num) %></th>
+      <th><%= model_class.human_attribute_name(:budget_hotel) %></th>
+      <th><%= model_class.human_attribute_name(:budget_meal) %></th>
+      <th><%= model_class.human_attribute_name(:option_transport) %></th>
+      <th><%= model_class.human_attribute_name(:option_edit) %></th>
+      <th><%= model_class.human_attribute_name(:option_pdf) %></th>
+      <th><%= model_class.human_attribute_name(:option_booking) %></th>
+      <th><%= model_class.human_attribute_name(:option_guide) %></th>
+      <th><%= model_class.human_attribute_name(:option_qa) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= link_to request.id, request_path(request) %></td>
+        <td><%= request.user_id %></td>
+        <td><%= request.username %></td>
+        <td><%= request.title %></td>
+        <td><%= request.start_datetime %></td>
+        <td><%= request.end_datetime %></td>
+        <td><%= request.people_num %></td>
+        <td><%= request.budget_hotel %></td>
+        <td><%= request.budget_meal %></td>
+        <td><%= request.option_transport %></td>
+        <td><%= request.option_edit %></td>
+        <td><%= request.option_pdf %></td>
+        <td><%= request.option_booking %></td>
+        <td><%= request.option_guide %></td>
+        <td><%= request.option_qa %></td>
+        <td><%=l request.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_request_path(request), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      request_path(request),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Request', new_request_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_request_path,
+            :class => 'btn btn-primary' %>

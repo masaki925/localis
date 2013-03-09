@@ -1,69 +1,13 @@
-<%= form_for(@request) do |f| %>
-  <% if @request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
-
-      <ul>
-      <% @request.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :start_datetime %><br />
-    <%= f.datetime_select :start_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :end_datetime %><br />
-    <%= f.datetime_select :end_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :people_num %><br />
-    <%= f.number_field :people_num %>
-  </div>
-  <div class="field">
-    <%= f.label :budget_hotel %><br />
-    <%= f.text_field :budget_hotel %>
-  </div>
-  <div class="field">
-    <%= f.label :budget_meal %><br />
-    <%= f.text_field :budget_meal %>
-  </div>
-  <div class="field">
-    <%= f.label :option_transport %><br />
-    <%= f.check_box :option_transport %>
-  </div>
-  <div class="field">
-    <%= f.label :option_edit %><br />
-    <%= f.check_box :option_edit %>
-  </div>
-  <div class="field">
-    <%= f.label :option_pdf %><br />
-    <%= f.check_box :option_pdf %>
-  </div>
-  <div class="field">
-    <%= f.label :option_booking %><br />
-    <%= f.check_box :option_booking %>
-  </div>
-  <div class="field">
-    <%= f.label :option_guide %><br />
-    <%= f.check_box :option_guide %>
-  </div>
-  <div class="field">
-    <%= f.label :option_qa %><br />
-    <%= f.check_box :option_qa %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<%= simple_form_for @request, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :start_datetime %>
+  <%= f.input :end_datetime %>
+  <%= f.input :people_num %>
+  <%= f.input :budget_hotel %>
+  <%= f.input :budget_meal %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                requests_path, :class => 'btn' %>
   </div>
 <% end %>
