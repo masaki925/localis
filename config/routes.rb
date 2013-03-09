@@ -1,4 +1,13 @@
 Localis::Application.routes.draw do
+  resources :generals
+
+
+  resources :plans
+
+
+  resources :spot_candidates
+
+
   resources :requests
 
 

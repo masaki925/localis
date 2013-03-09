@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request_id: 1
+  spot_id: 1
+  start_datetime: 2013-03-09 18:44:34
+  end_datetime: 2013-03-09 18:44:34
+
+two:
+  request_id: 1
+  spot_id: 1
+  start_datetime: 2013-03-09 18:44:34
+  end_datetime: 2013-03-09 18:44:34

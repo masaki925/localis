@@ -1,0 +1,27 @@
+<h1>Listing spot_candidates</h1>
+
+<table>
+  <tr>
+    <th>Request</th>
+    <th>Spot</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @spot_candidates.each do |spot_candidate| %>
+  <tr>
+    <td><%= spot_candidate.request_id %></td>
+    <td><%= spot_candidate.spot_id %></td>
+    <td><%= spot_candidate.user_id %></td>
+    <td><%= link_to 'Show', spot_candidate %></td>
+    <td><%= link_to 'Edit', edit_spot_candidate_path(spot_candidate) %></td>
+    <td><%= link_to 'Destroy', spot_candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Spot candidate', new_spot_candidate_path %>

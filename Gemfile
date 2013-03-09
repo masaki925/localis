@@ -11,7 +11,7 @@ ruby '2.0.0'
 # in production environments by default.
 group :test, :development do
   gem 'sqlite3'
-  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do

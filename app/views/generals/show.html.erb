@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @general.title %>
+</p>
+
+<p>
+  <b>Country code:</b>
+  <%= @general.country_code %>
+</p>
+
+<p>
+  <b>Visa:</b>
+  <%= @general.visa %>
+</p>
+
+<p>
+  <b>Climate:</b>
+  <%= @general.climate %>
+</p>
+
+<p>
+  <b>Payment:</b>
+  <%= @general.payment %>
+</p>
+
+<p>
+  <b>Annual events:</b>
+  <%= @general.annual_events %>
+</p>
+
+<p>
+  <b>Transportation:</b>
+  <%= @general.transportation %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @general.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_general_path(@general) %> |
+<%= link_to 'Back', generals_path %>

@@ -1,0 +1,2 @@
+module SpotCandidatesHelper
+end

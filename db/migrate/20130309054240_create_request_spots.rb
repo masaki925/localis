@@ -6,5 +6,7 @@ class CreateRequestSpots < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :request_spots, :spot_id
+    add_index :request_spots, :request_id
   end
 end
