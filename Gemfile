@@ -15,6 +15,8 @@ group :test, :development do
 end
 
 group :development do
+#rails g bootstrap:themedなどのscaffoldを使うとき便利なコマンドを使いたいので、読み込んでます。
+#rails g bootstrap:installするとレイアウトが壊れてしまうのでやらないこと。
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
@@ -36,6 +38,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'devise'
+
+gem 'cancan'
+gem 'rolify'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
