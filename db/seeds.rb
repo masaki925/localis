@@ -5,5 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+plan = Plan.create( { title: 'plan1' } )
 spot = Spot.create( [ { name: 'Asakusa', position: 1 }, { name: 'Shibuya', position: 2 }, { name: 'Shinjuku', position: 3 } ] )
-
+plan.spots = Spot.all

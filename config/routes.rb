@@ -1,5 +1,7 @@
 SimpleList::Application.routes.draw do
-  root :to => 'spots#index'
+  resources :plans
+
+  root :to => 'plans#index'
   resources :spots do
     post :sort, on: :collection
   end

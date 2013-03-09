@@ -1,0 +1,10 @@
+<h1>Editing plan</h1>
+
+<ul id="spots">
+  <% @spots.each do |spot| %>
+    <li id="spot_<%= spot.id %>"><span class="handle">[drag]</span><%= spot.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Show', @plan %> |
+<%= link_to 'Back', plans_path %>
