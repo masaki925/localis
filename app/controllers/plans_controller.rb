@@ -35,7 +35,9 @@ class PlansController < ApplicationController
   # GET /plans/1/edit
   def edit
     @plan = Plan.find(params[:id])
-    @spots = @plan.spots
+    @cand = Candidate.first
+    @plan_spots = @plan.spots.order('spots.position ASC')
+    @cand_spots = @cand.spots.order('spots.position ASC')
   end
 
   # POST /plans

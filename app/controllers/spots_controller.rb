@@ -13,7 +13,7 @@ class SpotsController < ApplicationController
   def sort
     @spots = Spot.all
     @spots.each do |spot|
-      spot.position = params['spot'].index( spot.id.to_s ) + 1
+      spot.position = params['plan_spot'].index( spot.id.to_s ) + 1
       spot.save
     end
     render :nothing => true
