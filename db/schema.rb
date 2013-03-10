@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309232928) do
+ActiveRecord::Schema.define(:version => 20130310084734) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "plan_spots", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "plan_spots", ["plan_id"], :name => "index_plan_spots_on_plan_id"
+  add_index "plan_spots", ["spot_id"], :name => "index_plan_spots_on_spot_id"
 
   create_table "plans", :force => true do |t|
     t.string   "title"
@@ -27,11 +37,8 @@ ActiveRecord::Schema.define(:version => 20130309232928) do
 
   create_table "spots", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "position"
-    t.integer  "plan_id"
-    t.integer  "candidate_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
