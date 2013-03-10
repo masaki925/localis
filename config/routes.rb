@@ -1,9 +1,11 @@
 SimpleList::Application.routes.draw do
   get "candidates/edit"
-
   get "candidates/index"
 
-  resources :plans
+  resources :plans do
+    post "cand_sort", on: :member
+  end
+
   get '/candidates' => 'candidates#index'
   get '/candidates/:id/edit' => 'candidates#edit'
 

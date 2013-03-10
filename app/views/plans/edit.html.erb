@@ -1,5 +1,7 @@
 <h1>Editing plan</h1>
 
+<%= hidden_field_tag :plan_id, @plan.id %>
+
 <div>
 <ul id="plan_spots" class="connectedSortable">
   <% @plan_spots.each do |plan_spot| %>

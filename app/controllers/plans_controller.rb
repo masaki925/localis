@@ -10,6 +10,19 @@ class PlansController < ApplicationController
     end
   end
 
+  def cand_sort
+    @plan = Plan.find( params[:id] )
+    @spots = Spot.find( params[:plan_spot] )
+    @plan.spots = @spots
+
+    @plan.plan_spots.each do |p_spot|
+      p_spot.position = params['plan_spot'].index( p_spot.id.to_s ) + 1
+      p_spot.save
+    end
+
+    render :nothing => true
+  end
+
   # GET /plans/1
   # GET /plans/1.json
   def show
@@ -36,7 +49,7 @@ class PlansController < ApplicationController
   def edit
     @plan = Plan.find(params[:id])
     @cand = Candidate.first
-    @plan_spots = @plan.spots.order('spots.position ASC')
+    @plan_spots = @plan.spots.order('plan_spots.position ASC')
     #@cand_spots = @cand.spots.order('spots.position ASC')
   end
 
