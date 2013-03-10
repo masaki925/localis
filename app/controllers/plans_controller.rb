@@ -37,7 +37,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @cand = Candidate.first
     @plan_spots = @plan.spots.order('spots.position ASC')
-    @cand_spots = @cand.spots.order('spots.position ASC')
+    #@cand_spots = @cand.spots.order('spots.position ASC')
   end
 
   # POST /plans

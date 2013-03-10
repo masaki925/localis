@@ -11,7 +11,7 @@ class SpotsController < ApplicationController
   end
 
   def sort
-    @spots = Spot.all
+    @spots = Spot.find( params[:plan_spot] )
     @spots.each do |spot|
       spot.position = params['plan_spot'].index( spot.id.to_s ) + 1
       spot.save

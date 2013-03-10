@@ -37,3 +37,5 @@ gem 'jquery-ui-rails'
 
 # To use debugger
 gem 'debugger'
+
+gem 'acts_as_list'
