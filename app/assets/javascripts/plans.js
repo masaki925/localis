@@ -2,7 +2,7 @@ $(document).ready(function(){
   $('#cand_spots, #plan_spots').sortable({
     connectWith: ".connectedSortable",
     axis: 'y',
-    dropOnEmpty: false,
+    dropOnEmpty: true,
     handle: '.handle',
     cursor: 'crosshair',
     items: 'li',

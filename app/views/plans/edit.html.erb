@@ -3,7 +3,17 @@
 <%= hidden_field_tag :plan_id, @plan.id %>
 
 <div>
+<ul id="cand_spots" class="connectedSortable">
+  <li>candidate spots</li>
+  <% @cand_spots.each do |cand_spot| %>
+    <li id="cand_spot_<%= cand_spot.id %>"><span class="handle">[drag]</span><%= cand_spot.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<div>
 <ul id="plan_spots" class="connectedSortable">
+  <li>plan spots</li>
   <% @plan_spots.each do |plan_spot| %>
     <li id="plan_spot_<%= plan_spot.id %>"><span class="handle">[drag]</span><%= plan_spot.name %></li>
   <% end %>

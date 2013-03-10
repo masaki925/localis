@@ -15,9 +15,10 @@ class PlansController < ApplicationController
     @spots = Spot.find( params[:plan_spot] )
     @plan.spots = @spots
 
-    @plan.plan_spots.each do |p_spot|
-      p_spot.position = params['plan_spot'].index( p_spot.id.to_s ) + 1
-      p_spot.save
+    params['plan_spot'].each_with_index do |spot_id, idx|
+      ps = PlanSpot.where( plan_id: @plan.id, spot_id: spot_id ).first
+      ps.position = idx + 1
+      ps.save
     end
 
     render :nothing => true
@@ -48,9 +49,10 @@ class PlansController < ApplicationController
   # GET /plans/1/edit
   def edit
     @plan = Plan.find(params[:id])
-    @cand = Candidate.first
+    @candidates = Candidate.all
     @plan_spots = @plan.spots.order('plan_spots.position ASC')
-    #@cand_spots = @cand.spots.order('spots.position ASC')
+    @cand_spots_all = Spot.where( ["id in (?)", @candidates.map {|c| c.spot_id}] )
+    @cand_spots = @cand_spots_all - @plan_spots
   end
 
   # POST /plans
