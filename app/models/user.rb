@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  has_many :spot_candidates
   has_many :spots, :through => :spot_candidates
 
   has_many :requests
@@ -16,11 +18,11 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-    user = User.create(    provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
-                           )
+    user = User.create(provider:auth.provider,
+                       uid:auth.uid,
+                       email:auth.info.email,
+                       password:Devise.friendly_token[0,20]
+                      )
     end
     user
   end
@@ -32,5 +34,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 end

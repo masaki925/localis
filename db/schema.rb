@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309110613) do
+ActiveRecord::Schema.define(:version => 20130312013417) do
 
   create_table "activities", :force => true do |t|
     t.string   "name",        :limit => 45
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(:version => 20130309110613) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  create_table "admins", :force => true do |t|
+    t.string   "email",               :default => "", :null => false
+    t.string   "encrypted_password",  :default => "", :null => false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
 
   create_table "generals", :force => true do |t|
     t.string   "title",          :limit => 45
@@ -74,6 +89,19 @@ ActiveRecord::Schema.define(:version => 20130309110613) do
   add_index "plans", ["request_id"], :name => "index_plans_on_request_id"
   add_index "plans", ["user_id"], :name => "index_plans_on_user_id"
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "request_hotels", :force => true do |t|
     t.integer  "request_id"
     t.integer  "spot_id"
@@ -106,16 +134,27 @@ ActiveRecord::Schema.define(:version => 20130309110613) do
     t.float    "budget_hotel",                   :default => 0.0,   :null => false
     t.float    "budget_meal",                    :default => 0.0,   :null => false
     t.boolean  "option_transport",               :default => false, :null => false
-    t.boolean  "option_edit",                                       :null => false
-    t.boolean  "option_pdf",                                        :null => false
-    t.boolean  "option_booking",                                    :null => false
-    t.boolean  "option_guide",                                      :null => false
-    t.boolean  "option_qa",                                         :null => false
+    t.boolean  "option_edit",                    :default => false, :null => false
+    t.boolean  "option_pdf",                     :default => false, :null => false
+    t.boolean  "option_booking",                 :default => false, :null => false
+    t.boolean  "option_guide",                   :default => false, :null => false
+    t.boolean  "option_qa",                      :default => false, :null => false
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "spot_candidates", :force => true do |t|
     t.integer  "request_id"
@@ -176,6 +215,23 @@ ActiveRecord::Schema.define(:version => 20130309110613) do
 
   add_index "spots", ["spot_category_id"], :name => "index_spots_on_spot_category_id"
 
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "tours", :force => true do |t|
     t.string   "name",        :limit => 45
     t.text     "description"
@@ -198,5 +254,12 @@ ActiveRecord::Schema.define(:version => 20130309110613) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
 end

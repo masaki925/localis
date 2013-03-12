@@ -1,15 +1,20 @@
 Localis::Application.routes.draw do
-  resources :generals
 
+
+
+  mount RailsAdmin::Engine => '/rails_admin', :as => 'rails_admin'
+
+  devise_for :admins
+
+  resources :generals
 
   resources :plans
 
-
   resources :spot_candidates
 
-
-  resources :requests
-
+  resources :users, shallow: true do
+    resources :requests
+  end
 
   root to: "home#index"
   devise_scope :user do

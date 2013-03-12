@@ -20,6 +20,7 @@ group :development do
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'rails-erd'
 end
 
 group :production do
@@ -30,7 +31,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
+  gem 'bootstrap-sass'
   gem 'compass-rails'
   gem 'sassy-buttons'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -45,7 +46,9 @@ gem 'devise'
 
 gem 'cancan'
 gem 'rolify'
+gem 'rails_admin'
 gem 'simple_form'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -24,7 +24,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
-    @request = Request.new
+    @request = User.find(params[:user_id]).requests.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(params[:request])
+    @request = User.find(params[:user_id]).requests.new(params[:request])
 
     respond_to do |format|
       if @request.save
