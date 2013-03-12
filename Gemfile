@@ -45,7 +45,7 @@ gem 'omniauth-facebook'
 gem 'devise'
 
 gem 'cancan'
-gem 'rolify'
+gem 'rolify', '3.2.0'
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
