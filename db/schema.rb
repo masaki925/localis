@@ -134,11 +134,11 @@ ActiveRecord::Schema.define(:version => 20130312013417) do
     t.float    "budget_hotel",                   :default => 0.0,   :null => false
     t.float    "budget_meal",                    :default => 0.0,   :null => false
     t.boolean  "option_transport",               :default => false, :null => false
-    t.boolean  "option_edit",                                       :null => false
-    t.boolean  "option_pdf",                                        :null => false
-    t.boolean  "option_booking",                                    :null => false
-    t.boolean  "option_guide",                                      :null => false
-    t.boolean  "option_qa",                                         :null => false
+    t.boolean  "option_edit",                    :default => false, :null => false
+    t.boolean  "option_pdf",                     :default => false, :null => false
+    t.boolean  "option_booking",                 :default => false, :null => false
+    t.boolean  "option_guide",                   :default => false, :null => false
+    t.boolean  "option_qa",                      :default => false, :null => false
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
   end

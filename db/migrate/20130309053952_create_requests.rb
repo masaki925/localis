@@ -10,11 +10,11 @@ class CreateRequests < ActiveRecord::Migration
       t.float :budget_hotel, null:false, default: 0
       t.float :budget_meal, null:false, default: 0
       t.boolean :option_transport, null:false, default: 0
-      t.boolean :option_edit, null:false
-      t.boolean :option_pdf, null:false
-      t.boolean :option_booking, null:false
-      t.boolean :option_guide, null:false
-      t.boolean :option_qa, null:false
+      t.boolean :option_edit, null:false, default: 0
+      t.boolean :option_pdf, null:false, default: 0
+      t.boolean :option_booking, null:false, default: 0
+      t.boolean :option_guide, null:false, default: 0
+      t.boolean :option_qa, null:false, default: 0
 
       t.timestamps
     end
