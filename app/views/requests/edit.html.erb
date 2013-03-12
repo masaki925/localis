@@ -2,4 +2,14 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
 </div>
-<%= render :partial => 'form' %>
+<%= simple_form_for @request, :url => {:action => "update"}, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.input :option_transport %>
+    <%= f.input :option_edit %>
+    <%= f.input :option_pdf %>
+    <%= f.input :option_booking %>
+    <%= f.input :option_guide %>
+    <%= f.input :option_qa %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>
