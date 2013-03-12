@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
     end
-    redirect_to new_request_url
+    redirect_to new_user_request_url(@user)
   end
 
   def passthru

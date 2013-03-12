@@ -1,4 +1,5 @@
-<%= simple_form_for @request, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @request, :url => {:action => "create"}, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :username %>
   <%= f.input :title %>
   <%= f.input :start_datetime %>
   <%= f.input :end_datetime %>
@@ -8,6 +9,6 @@
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                requests_path, :class => 'btn' %>
+                user_requests_path, :class => 'btn' %>
   </div>
 <% end %>

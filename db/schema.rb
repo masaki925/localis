@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311063801) do
+ActiveRecord::Schema.define(:version => 20130312013417) do
 
   create_table "activities", :force => true do |t|
     t.string   "name",        :limit => 45
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(:version => 20130311063801) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  create_table "admins", :force => true do |t|
+    t.string   "email",               :default => "", :null => false
+    t.string   "encrypted_password",  :default => "", :null => false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
 
   create_table "generals", :force => true do |t|
     t.string   "title",          :limit => 45
@@ -74,6 +89,19 @@ ActiveRecord::Schema.define(:version => 20130311063801) do
   add_index "plans", ["request_id"], :name => "index_plans_on_request_id"
   add_index "plans", ["user_id"], :name => "index_plans_on_user_id"
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "request_hotels", :force => true do |t|
     t.integer  "request_id"
     t.integer  "spot_id"
@@ -97,16 +125,22 @@ ActiveRecord::Schema.define(:version => 20130311063801) do
   add_index "request_spots", ["spot_id"], :name => "index_request_spots_on_spot_id"
 
   create_table "requests", :force => true do |t|
-    t.integer  "user_id",                                       :null => false
-    t.string   "username",                                      :null => false
-    t.string   "title",          :limit => 45,                  :null => false
-    t.datetime "start_datetime",                                :null => false
-    t.datetime "end_datetime",                                  :null => false
-    t.integer  "people_num",                   :default => 0,   :null => false
-    t.float    "budget_hotel",                 :default => 0.0, :null => false
-    t.float    "budget_meal",                  :default => 0.0, :null => false
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.integer  "user_id",                                           :null => false
+    t.string   "username",                                          :null => false
+    t.string   "title",            :limit => 45,                    :null => false
+    t.datetime "start_datetime",                                    :null => false
+    t.datetime "end_datetime",                                      :null => false
+    t.integer  "people_num",                     :default => 0,     :null => false
+    t.float    "budget_hotel",                   :default => 0.0,   :null => false
+    t.float    "budget_meal",                    :default => 0.0,   :null => false
+    t.boolean  "option_transport",               :default => false, :null => false
+    t.boolean  "option_edit",                                       :null => false
+    t.boolean  "option_pdf",                                        :null => false
+    t.boolean  "option_booking",                                    :null => false
+    t.boolean  "option_guide",                                      :null => false
+    t.boolean  "option_qa",                                         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
