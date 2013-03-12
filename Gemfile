@@ -31,9 +31,9 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass'
+  gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
   gem 'compass-rails'
-  #gem 'sassy-buttons'
+  gem 'sassy-buttons'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'uglifier', '>= 1.0.3'
 end
@@ -46,7 +46,6 @@ gem 'devise'
 
 gem 'cancan'
 gem 'rolify'
-gem 'rails_admin'
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
