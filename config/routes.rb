@@ -4,10 +4,10 @@ Localis::Application.routes.draw do
 
   resources :plans
 
-  resources :spot_candidates
-
   resources :users, shallow: true do
-    resources :requests, except: :index
+    resources :requests, except: :index do
+      resources :spot_candidates
+    end
   end
 
   get '/requests', :to => 'requests#index'
