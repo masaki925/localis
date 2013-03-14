@@ -105,6 +105,7 @@ GEM
     multi_json (1.6.1)
     multipart-post (1.2.0)
     netrc (0.7.7)
+    newrelic_rpm (3.5.8.72)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -224,6 +225,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   less-rails
+  newrelic_rpm
   omniauth
   omniauth-facebook
   pg
