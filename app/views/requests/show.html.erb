@@ -7,9 +7,9 @@
 
 <p>
   <b>candidate:</b>
-  <% @candidates.each do |candidate| %>
+  <% @plans.each do |plan| %>
     <li>
-    spot id: <%= candidate.spot_id %>
+    <%= link_to plan.title, plan_path( plan ) %>
     </li>
   <% end %>
 </p>

@@ -2,7 +2,7 @@ class PlanDaysController < ApplicationController
   # GET /plan_days
   # GET /plan_days.json
   def index
-    @plan_days = PlanDay.all
+    @plan_days = PlanDay.where( plan_id: params[:plan_id] )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +46,7 @@ class PlanDaysController < ApplicationController
     end
   end
 
-  # GET /requests/:request_id/plans/:plan_id/plan_days/1/edit
+  # GET /plan_days/1/edit
   def edit
     @plan_day = PlanDay.find(params[:id])
 

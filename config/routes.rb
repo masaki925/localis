@@ -1,9 +1,10 @@
 SimpleList::Application.routes.draw do
-  resources :requests
-
-  resources :plans do
-    resources :plan_days
-    post "cand_sort", on: :member
+  resources :requests, shallow: true do
+    resources :plans do
+      resources :plan_days do
+        post "cand_sort", on: :member
+      end
+    end
   end
 
   get '/candidates'     => 'candidates#index',     :as => :candidates

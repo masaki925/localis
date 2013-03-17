@@ -30,6 +30,7 @@ end
 
 plan1 = Plan.create( { title: "plan1" } )
 plan1.request = request1
+plan1.save
 
 2.times do |i|
   plan_day = PlanDay.create( { day: i+1 } )
@@ -52,6 +53,7 @@ end
 
 plan2 = Plan.create( { title: "plan2" } )
 plan2.request = request2
+plan2.save
 
 2.times do |i|
   plan_day = PlanDay.create( { day: i+1 } )

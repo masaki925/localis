@@ -10,7 +10,7 @@
 
 <% @plan_days.each do |plan_day| %>
   <tr>
-    <td><%= plan_day.plan_id %></td>
+    <td>day <%= plan_day.day %></td>
     <td><%= link_to 'Show', plan_day %></td>
     <td><%= link_to 'Edit', edit_plan_day_path(plan_day) %></td>
     <td><%= link_to 'Destroy', plan_day, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New Plan day', new_plan_day_path %>
+<%= link_to 'New Plan day', new_plan_plan_day_path %>

@@ -21,6 +21,6 @@
 </ul>
 </div>
 
-<%= link_to 'Show', plan_plan_day_path( @plan_day ) %> |
+<%= link_to 'Show', plan_day_path( @plan_day ) %> |
 
-<%= link_to 'Back', plan_plan_days_path %>
+<%= link_to 'Back', plan_plan_days_path( @plan_day.plan ) %>

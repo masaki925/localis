@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
-    @candidates = Candidate.where( request_id: @request.id )
+    @plans = @request.plans
 
     respond_to do |format|
       format.html # show.html.erb
