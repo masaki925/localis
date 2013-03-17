@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.integer  "user_id",                                            :null => false
     t.string   "username",                                           :null => false
     t.string   "title",             :limit => 45,                    :null => false
+    t.boolean  "complete",                        :default => false, :null => false
     t.datetime "start_datetime",                                     :null => false
     t.datetime "end_datetime",                                       :null => false
     t.integer  "people_num",                      :default => 0,     :null => false
@@ -177,8 +178,8 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "spot_tours", ["tour_id"], :name => "index_spot_tours_on_tour_id"
 
   create_table "spots", :force => true do |t|
-    t.string   "google_spot_id",                 :null => false
-    t.string   "name"
+    t.string   "google_spot_id"
+    t.string   "name",             :limit => 45, :null => false
     t.string   "address",          :limit => 45
     t.string   "tel",              :limit => 45
     t.integer  "take_time"

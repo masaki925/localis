@@ -4,6 +4,7 @@ class CreateRequests < ActiveRecord::Migration
       t.integer :user_id, null:false
       t.string :username, null:false
       t.string :title, null:false, limit:45
+      t.boolean :complete, null:false, default: false
       t.datetime :start_datetime, null:false
       t.datetime :end_datetime, null:false
       t.integer :people_num, null:false, default: 0
