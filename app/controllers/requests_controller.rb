@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
+    @candidates = @request.candidates.filter( session[:user_id] )
     @plans = @request.plans
 
     respond_to do |format|

@@ -8,6 +8,7 @@
 
 2.times do |i|
   Request.create( { title: "request#{i+1}" } )
+  User.create( { name: "user#{i+1}" } )
 end
 
 3.times do |i|
@@ -17,7 +18,6 @@ end
 spots1 = [Spot.find(1), Spot.find(2)]
 spots2 = [Spot.find(2), Spot.find(3)]
 
-
 # for request 1 ----------------------------
 request1 = Request.find(1)
 
@@ -25,6 +25,7 @@ request1 = Request.find(1)
   candidate = Candidate.create( { name: "cand#{i+1}" } )
   candidate.spot_id    = spots1[i].id
   candidate.request_id = request1.id
+  candidate.user = User.first
   candidate.save
 end
 
@@ -48,6 +49,7 @@ request2 = Request.find(2)
   candidate = Candidate.create( { name: "cand#{i+3}" } )
   candidate.spot_id    = spots2[i].id
   candidate.request_id = request2.id
+  candidate.user = User.first
   candidate.save
 end
 

@@ -9,15 +9,17 @@
 <body>
   <ul>
     <% if session[:user_id] %>
-      <li><%= "hello, user #{session[:user_id]}" %></li>
+      <li><%= "hello, #{User.find(session[:user_id]).name}" %></li>
+    <li><%= link_to 'logout', '/logins/logout' %></li>
     <% else %>
       <li><%= "not login" %></li>
+      <li><%= link_to 'login as user1', '/logins/login/1' %></li>
+      <li><%= link_to 'login as user2', '/logins/login/2' %></li>
     <% end %>
   </ul>
 
   <ul>
     <li><%= link_to 'requests', requests_path %></li>
-    <li><%= link_to 'logins', logins_path %></li>
   </ul>
 <%= yield %>
 

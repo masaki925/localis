@@ -6,7 +6,16 @@
 </p>
 
 <p>
-  <b>candidate:</b>
+  <b>candidates:</b>
+  <% @candidates.each do |candidate| %>
+    <li>
+    <%= link_to candidate.name, candidates_path( candidate ) %>
+    </li>
+  <% end %>
+</p>
+
+<p>
+  <b>plans:</b>
   <% @plans.each do |plan| %>
     <li>
     <%= link_to plan.title, plan_path( plan ) %>
