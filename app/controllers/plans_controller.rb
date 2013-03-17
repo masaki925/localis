@@ -48,9 +48,15 @@ class PlansController < ApplicationController
 
   # GET /plans/1/edit
   def edit
+    # TODO: ここはplan_day になる予定
     @plan = Plan.find(params[:id])
+
+    # TODO: request を絡ませて、candidates を絞り込む
     @candidates = Candidate.all
+
+    # TODO: plan_spots は、planday_spots になる?
     @plan_spots = @plan.spots.order('plan_spots.position ASC')
+
     @cand_spots_all = Spot.where( ["id in (?)", @candidates.map {|c| c.spot_id}] )
     @cand_spots = @cand_spots_all - @plan_spots
   end

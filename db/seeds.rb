@@ -5,23 +5,45 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-plan1 = Plan.create( { title: 'plan1' } )
-plan2 = Plan.create( { title: 'plan2' } )
-candidate1 = Candidate.create( { name: 'cand1' } )
-candidate1.spot = Spot.create( { name: 'spot1' } )
-candidate1.save
-candidate2 = Candidate.create( { name: 'cand2' } )
-candidate2.spot = Spot.create( { name: 'spot2' } )
-candidate2.save
 
-candidate3 = Candidate.create( { name: 'cand3' } )
-spot3 = Spot.create( { name: 'spot3' } )
-candidate3.spot = spot3
-candidate3.save
+2.times do |i|
+  Request.create( { title: "request#{i+1}" } )
+end
 
-plan1.spots = [spot3]
-#plan2.spots = Spot.create( [ { name: 'spot4' }, { name: 'spot5' } ] )
+2.times do |i|
+  Plan.create( { title: "plan#{i+1}" } )
+end
 
-#spot = Spot.create( [ { name: 'spot4' } ] )
-#plan.spots = [Spot.last]
+3.times do |i|
+  spot = Spot.create( { name: "spot#{i+1}" } )
+end
+
+spots1 = [Spot.find(1), Spot.find(2)]
+spots2 = [Spot.find(2), Spot.find(3)]
+
+
+# for request 1
+2.times do |i|
+  request = Request.find(1)
+
+  candidate = Candidate.create( { name: "cand#{i+1}" } )
+  candidate.spot_id    = spots1[i].id
+  candidate.request_id = request.id
+  candidate.save
+end
+
+
+# for request 2
+2.times do |i|
+  request = Request.find(2)
+
+  # cand のname は最終的に無くなる
+  candidate = Candidate.create( { name: "cand#{i+3}" } )
+  candidate.spot_id    = spots2[i].id
+  candidate.request_id = request.id
+  candidate.save
+end
+
+
+Plan.first.spots = [Spot.first]
 

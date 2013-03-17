@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @request.title %>
+</p>
+
+<p>
+  <b>candidate:</b>
+  <% @candidates.each do |candidate| %>
+    <li>
+    spot id: <%= candidate.spot_id %>
+    </li>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
