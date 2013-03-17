@@ -26,6 +26,7 @@ end
 group :production do
   gem 'heroku'
   gem 'pg'
+  gem 'newrelic_rpm'
 end
 
 group :assets do
@@ -58,7 +59,6 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'foreman'
-gem 'newrelic_rpm'
 # Deploy with Capistrano
 # gem 'capistrano'
 
