@@ -12,7 +12,6 @@ $(document).ready(function(){
       $("[id^=cand_spot_]").attr("id",function(i, old_id){
         return old_id.replace('cand', 'plan')
       });
-      var plan_id = $('#plan_id').val();
       var plan_day_id = $('#plan_day_id').val();
       $.ajax({
         type: 'post',
@@ -21,7 +20,7 @@ $(document).ready(function(){
         complete: function(request){
           $('#plan_spots').effect('highlight');
         },
-        url: '/plans/' + plan_id + '/plan_days/' + plan_day_id + '/cand_sort'})
+        url: '/plan_days/' + plan_day_id + '/cand_sort'})
     }
   });
 });

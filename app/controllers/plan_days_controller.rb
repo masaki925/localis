@@ -16,7 +16,7 @@ class PlanDaysController < ApplicationController
     @plan_day.spots = @spots
 
     params['plan_spot'].each_with_index do |spot_id, idx|
-      ps = PlanSpot.where( plan_day_id: @plan.id, spot_id: spot_id ).first
+      ps = PlanSpot.where( plan_day_id: @plan_day.id, spot_id: spot_id ).first
       ps.position = idx + 1
       ps.save
     end
@@ -48,10 +48,8 @@ class PlanDaysController < ApplicationController
 
   # GET /plan_days/1/edit
   def edit
-    @plan_day = PlanDay.find(params[:id])
-
-    # TODO: request を絡ませて、candidates を絞り込む
-    @candidates = Candidate.where( request_id: params[:request_id] )
+    @plan_day   = PlanDay.find(params[:id])
+    @candidates = Candidate.where( request_id: @plan_day.plan.request_id )
 
     # TODO: plan_spots は、planday_spots になる?
     @plan_spots = @plan_day.spots.order('plan_spots.position ASC')
