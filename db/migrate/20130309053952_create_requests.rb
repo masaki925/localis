@@ -16,7 +16,7 @@ class CreateRequests < ActiveRecord::Migration
       t.boolean :option_guide, null:false, default: 0
       t.boolean :option_qa, null:false, default: 0
 
-      t.datetime :deadline_datetie, null:false
+      t.datetime :deadline_datetime, null:false
       t.timestamps
     end
     add_index :requests, :user_id

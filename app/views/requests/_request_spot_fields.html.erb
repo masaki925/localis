@@ -1,0 +1,5 @@
+<div class="nested-fields">
+  <%= f.fields_for :spot, Spot.new do |spot| %>
+    <%= spot.input :google_spot_id %>
+  <% end %>
+</div>

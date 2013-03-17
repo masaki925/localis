@@ -12,6 +12,9 @@ ruby '2.0.0'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'factory_girl'
+  gem 'fabrication'
+  gem 'faker'
 end
 
 group :development do
@@ -49,7 +52,7 @@ gem 'cancan'
 gem 'rolify', '3.2.0'
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 2.3.1'
-
+gem 'cocoon'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

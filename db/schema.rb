@@ -97,22 +97,23 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "request_spots", ["spot_id"], :name => "index_request_spots_on_spot_id"
 
   create_table "requests", :force => true do |t|
-    t.integer  "user_id",                                           :null => false
-    t.string   "username",                                          :null => false
-    t.string   "title",            :limit => 45,                    :null => false
-    t.datetime "start_datetime",                                    :null => false
-    t.datetime "end_datetime",                                      :null => false
-    t.integer  "people_num",                     :default => 0,     :null => false
-    t.float    "budget_hotel",                   :default => 0.0,   :null => false
-    t.float    "budget_meal",                    :default => 0.0,   :null => false
-    t.boolean  "option_transport",               :default => false, :null => false
-    t.boolean  "option_edit",                    :default => false, :null => false
-    t.boolean  "option_pdf",                     :default => false, :null => false
-    t.boolean  "option_booking",                 :default => false, :null => false
-    t.boolean  "option_guide",                   :default => false, :null => false
-    t.boolean  "option_qa",                      :default => false, :null => false
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.integer  "user_id",                                            :null => false
+    t.string   "username",                                           :null => false
+    t.string   "title",             :limit => 45,                    :null => false
+    t.datetime "start_datetime",                                     :null => false
+    t.datetime "end_datetime",                                       :null => false
+    t.integer  "people_num",                      :default => 0,     :null => false
+    t.float    "budget_hotel",                    :default => 0.0,   :null => false
+    t.float    "budget_meal",                     :default => 0.0,   :null => false
+    t.boolean  "option_transport",                :default => false, :null => false
+    t.boolean  "option_edit",                     :default => false, :null => false
+    t.boolean  "option_pdf",                      :default => false, :null => false
+    t.boolean  "option_booking",                  :default => false, :null => false
+    t.boolean  "option_guide",                    :default => false, :null => false
+    t.boolean  "option_qa",                       :default => false, :null => false
+    t.datetime "deadline_datetime",                                  :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
@@ -132,8 +133,10 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.integer  "request_id"
     t.integer  "spot_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "recommendation_text", :limit => 400
+    t.text     "comments",            :limit => 400
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "spot_candidates", ["request_id"], :name => "index_spot_candidates_on_request_id"
@@ -174,7 +177,8 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "spot_tours", ["tour_id"], :name => "index_spot_tours_on_tour_id"
 
   create_table "spots", :force => true do |t|
-    t.string   "name",             :limit => 45, :null => false
+    t.string   "google_spot_id",                 :null => false
+    t.string   "name"
     t.string   "address",          :limit => 45
     t.string   "tel",              :limit => 45
     t.integer  "take_time"

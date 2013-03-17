@@ -3,9 +3,29 @@
   <%= f.input :title %>
   <%= f.input :start_datetime %>
   <%= f.input :end_datetime %>
+  <%= f.input :deadline_datetime %>
+  <p>request_spots</p>
+  <div id="request_spots">
+    <%= f.simple_fields_for :request_spots, RequestSpot.new do |request_spot| %>
+      <%= render 'request_spot_fields', :f => request_spot %>
+      <div class="links">
+        <%= link_to_add_association 'add_request_spot', f, :request_spots %>
+      </div>
+    <% end %>
+  </div>
+  <p>request_hotels</p>
+  <div id="request_hotels">
+    <%= f.simple_fields_for :request_hotels, RequestHotel.new do |request_hotel| %>
+      <%= render 'request_hotel_fields', :f => request_hotel %>
+      <div class="links">
+        <%= link_to_add_association 'add_request_hotel', f, :request_hotels %>
+      </div>
+    <% end %>
+  </div>
   <%= f.input :people_num %>
   <%= f.input :budget_hotel %>
   <%= f.input :budget_meal %>
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

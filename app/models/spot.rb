@@ -1,5 +1,6 @@
 class Spot < ActiveRecord::Base
-  attr_accessible :address, :cost, :name, :spot_category_id, :station, :take_time, :tel
+  attr_accessible :address, :cost, :name, :spot_category_id, :station,
+                  :take_time, :tel, :google_spot_id
   has_many :spot_candidates
   has_many :user, :through => :spot_candidates
 
