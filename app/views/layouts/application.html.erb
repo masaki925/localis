@@ -7,9 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul>
+    <% if session[:user_id] %>
+      <li><%= "hello, user #{session[:user_id]}" %></li>
+    <% else %>
+      <li><%= "not login" %></li>
+    <% end %>
+  </ul>
 
   <ul>
     <li><%= link_to 'requests', requests_path %></li>
+    <li><%= link_to 'logins', logins_path %></li>
   </ul>
 <%= yield %>
 

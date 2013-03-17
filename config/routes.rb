@@ -1,4 +1,10 @@
 SimpleList::Application.routes.draw do
+  get '/logins'        => 'logins#index'
+  get '/logins/login/:user_id'  => 'logins#login'
+  get '/logins/logout' => 'logins#logout'
+
+  resources :users
+
   resources :requests, shallow: true do
     resources :plans do
       resources :plan_days do
@@ -12,7 +18,7 @@ SimpleList::Application.routes.draw do
   get '/candidates/:id' => 'candidates#show',      :as => :candidate
   get '/candidates/:id/edit' => 'candidates#edit', :as => :edit_candidate
 
-  root :to => 'plans#index'
+  root :to => 'logins#index'
   resources :spots do
     post :sort, on: :collection
   end
