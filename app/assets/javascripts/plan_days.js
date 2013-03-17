@@ -13,6 +13,7 @@ $(document).ready(function(){
         return old_id.replace('cand', 'plan')
       });
       var plan_id = $('#plan_id').val();
+      var plan_day_id = $('#plan_day_id').val();
       $.ajax({
         type: 'post',
         data: $('#plan_spots').sortable('serialize'),
@@ -20,7 +21,7 @@ $(document).ready(function(){
         complete: function(request){
           $('#plan_spots').effect('highlight');
         },
-        url: '/plans/' + plan_id + '/cand_sort'})
+        url: '/plans/' + plan_id + '/plan_days/' + plan_day_id + '/cand_sort'})
     }
   });
 });

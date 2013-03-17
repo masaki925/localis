@@ -1,8 +1,8 @@
 SimpleList::Application.routes.draw do
   resources :requests
 
-
   resources :plans do
+    resources :plan_days
     post "cand_sort", on: :member
   end
 

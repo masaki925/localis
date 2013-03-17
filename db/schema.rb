@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317024443) do
+ActiveRecord::Schema.define(:version => 20130317051225) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name"
@@ -21,21 +21,29 @@ ActiveRecord::Schema.define(:version => 20130317024443) do
     t.integer  "request_id"
   end
 
-  create_table "plan_spots", :force => true do |t|
+  create_table "plan_days", :force => true do |t|
+    t.integer  "day"
     t.integer  "plan_id"
-    t.integer  "spot_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "plan_spots", :force => true do |t|
+    t.integer  "plan_day_id"
+    t.integer  "spot_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "position"
   end
 
-  add_index "plan_spots", ["plan_id"], :name => "index_plan_spots_on_plan_id"
+  add_index "plan_spots", ["plan_day_id"], :name => "index_plan_spots_on_plan_day_id"
   add_index "plan_spots", ["spot_id"], :name => "index_plan_spots_on_spot_id"
 
   create_table "plans", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "request_id"
   end
 
   create_table "requests", :force => true do |t|

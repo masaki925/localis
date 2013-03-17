@@ -1,0 +1,26 @@
+<h1>Editing plan_day</h1>
+
+<%= hidden_field_tag :plan_id, @plan_day.plan.id %>
+<%= hidden_field_tag :plan_day_id, @plan_day.id %>
+
+<div>
+<ul id="cand_spots" class="connectedSortable">
+  <li>candidate spots</li>
+  <% @cand_spots.each do |cand_spot| %>
+    <li id="cand_spot_<%= cand_spot.id %>"><span class="handle">[drag]</span><%= cand_spot.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<div>
+<ul id="plan_spots" class="connectedSortable">
+  <li>plan spots</li>
+  <% @plan_spots.each do |plan_spot| %>
+    <li id="plan_spot_<%= plan_spot.id %>"><span class="handle">[drag]</span><%= plan_spot.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<%= link_to 'Show', plan_plan_day_path( @plan_day ) %> |
+
+<%= link_to 'Back', plan_plan_days_path %>

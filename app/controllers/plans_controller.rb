@@ -10,24 +10,11 @@ class PlansController < ApplicationController
     end
   end
 
-  def cand_sort
-    @plan = Plan.find( params[:id] )
-    @spots = Spot.find( params[:plan_spot] )
-    @plan.spots = @spots
-
-    params['plan_spot'].each_with_index do |spot_id, idx|
-      ps = PlanSpot.where( plan_id: @plan.id, spot_id: spot_id ).first
-      ps.position = idx + 1
-      ps.save
-    end
-
-    render :nothing => true
-  end
-
   # GET /plans/1
   # GET /plans/1.json
   def show
     @plan = Plan.find(params[:id])
+    @plan_days = @plan.plan_days
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,17 +35,7 @@ class PlansController < ApplicationController
 
   # GET /plans/1/edit
   def edit
-    # TODO: ここはplan_day になる予定
     @plan = Plan.find(params[:id])
-
-    # TODO: request を絡ませて、candidates を絞り込む
-    @candidates = Candidate.all
-
-    # TODO: plan_spots は、planday_spots になる?
-    @plan_spots = @plan.spots.order('plan_spots.position ASC')
-
-    @cand_spots_all = Spot.where( ["id in (?)", @candidates.map {|c| c.spot_id}] )
-    @cand_spots = @cand_spots_all - @plan_spots
   end
 
   # POST /plans
