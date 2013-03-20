@@ -47,6 +47,8 @@ class RequestsController < ApplicationController
       if @request.save
         current_user.add_role :requester
         current_user.remove_role :guest
+        UserMailer.inform_planner_of(@request).deliver
+
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
