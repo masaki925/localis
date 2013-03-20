@@ -1,5 +1,7 @@
 Localis::Application.routes.draw do
 
+  mount Mercury::Engine => '/'
+
   resources :generals
 
   resources :plans
