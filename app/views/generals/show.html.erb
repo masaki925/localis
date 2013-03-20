@@ -1,5 +1,5 @@
 <div class="span3">
-  <ul class="nav nav-tabs nav-stacked bs-docs-sidenav">
+  <ul class="nav nav-list nav-stacked" data-spy="affix" data-offset-top="200">
     <li class=""><a href="#General">General</a></li>
     <li class=""><a href="#AnnualEvents">Annual Events</a></li>
     <li class=""><a href="#Transportation">Transportation</a></li>
@@ -80,9 +80,9 @@
   <section id="Useful">
     <div class="page-header">
       <h1>Useful Expessions</h1>
-          <div id="useful" data-mercury="full">
-            <%= raw @general.useful %>
-          </div>
+      <div id="useful" data-mercury="full">
+        <%= raw @general.useful %>
+      </div>
     </div>
   </section>
 </div>
