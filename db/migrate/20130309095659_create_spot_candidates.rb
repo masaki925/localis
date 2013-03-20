@@ -4,8 +4,8 @@ class CreateSpotCandidates < ActiveRecord::Migration
       t.integer :request_id
       t.integer :spot_id
       t.integer :user_id
-      t.text :recommendation_text, limit:400
-      t.text :comments, limit:400
+      t.text :recommendation_text
+      t.text :comments
       t.timestamps
     end
     add_index :spot_candidates, :request_id
