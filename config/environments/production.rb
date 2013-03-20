@@ -64,6 +64,8 @@ Localis::Application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 
+  config.assets.precompile += %w( mercury.js mercury.css mercury_overrides.css )
+
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
