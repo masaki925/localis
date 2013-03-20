@@ -4,12 +4,6 @@
   <tr>
     <th>Title</th>
     <th>Country code</th>
-    <th>Visa</th>
-    <th>Climate</th>
-    <th>Payment</th>
-    <th>Annual events</th>
-    <th>Transportation</th>
-    <th>Price</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,14 +13,8 @@
   <tr>
     <td><%= general.title %></td>
     <td><%= general.country_code %></td>
-    <td><%= general.visa %></td>
-    <td><%= general.climate %></td>
-    <td><%= general.payment %></td>
-    <td><%= general.annual_events %></td>
-    <td><%= general.transportation %></td>
-    <td><%= general.price %></td>
     <td><%= link_to 'Show', general %></td>
-    <td><%= link_to 'Edit', edit_general_path(general) %></td>
+    <td><%= link_to 'Edit', "editor" + general_path(general) %></td>
     <td><%= link_to 'Destroy', general, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

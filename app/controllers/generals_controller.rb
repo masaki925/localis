@@ -58,6 +58,16 @@ class GeneralsController < ApplicationController
   def update
     @general = General.find(params[:id])
 
+    @general.general = params[:content][:general][:value]
+    @general.annual_events = params[:content][:annual_events][:value]
+    @general.transportation = params[:content][:transportation][:value]
+    @general.bizhour = params[:content][:bizhour][:value]
+    @general.prices = params[:content][:prices][:value]
+    @general.money = params[:content][:money][:value]
+    @general.safety = params[:content][:safety][:value]
+    @general.emergency = params[:content][:emergency][:value]
+    @general.useful = params[:content][:useful][:value]
+
     respond_to do |format|
       if @general.update_attributes(params[:general])
         format.html { redirect_to @general, notice: 'General was successfully updated.' }

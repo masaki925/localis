@@ -23,12 +23,15 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   create_table "generals", :force => true do |t|
     t.string   "title",          :limit => 45
     t.string   "country_code",   :limit => 2
-    t.text     "visa"
-    t.text     "climate"
-    t.text     "payment"
+    t.text     "general"
+    t.text     "bizhour"
+    t.text     "money"
+    t.text     "safety"
+    t.text     "emergency"
+    t.text     "useful"
     t.text     "annual_events"
     t.text     "transportation"
-    t.text     "price"
+    t.text     "prices"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
@@ -134,10 +137,10 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.integer  "request_id"
     t.integer  "spot_id"
     t.integer  "user_id"
-    t.text     "recommendation_text", :limit => 400
-    t.text     "comments",            :limit => 400
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.text     "recommendation_text"
+    t.text     "comments"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "spot_candidates", ["request_id"], :name => "index_spot_candidates_on_request_id"

@@ -1,45 +1,90 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @general.title %>
-</p>
-
-<p>
-  <b>Country code:</b>
-  <%= @general.country_code %>
-</p>
-
-<p>
-  <b>Visa:</b>
-  <%= @general.visa %>
-</p>
-
-<p>
-  <b>Climate:</b>
-  <%= @general.climate %>
-</p>
-
-<p>
-  <b>Payment:</b>
-  <%= @general.payment %>
-</p>
-
-<p>
-  <b>Annual events:</b>
-  <%= @general.annual_events %>
-</p>
-
-<p>
-  <b>Transportation:</b>
-  <%= @general.transportation %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @general.price %>
-</p>
-
-
+<div class="span3">
+  <ul class="nav nav-tabs nav-stacked bs-docs-sidenav">
+    <li class=""><a href="#General">General</a></li>
+    <li class=""><a href="#AnnualEvents">Annual Events</a></li>
+    <li class=""><a href="#Transportation">Transportation</a></li>
+    <li class=""><a href="#BizHour">Bussiness hours</a></li>
+    <li class=""><a href="#Prices">Prices</a></li>
+    <li class=""><a href="#Money">Money</a></li>
+    <li class=""><a href="#Safety">Safety</a></li>
+    <li class=""><a href="#Emergency">Emergency</a></li>
+    <li class=""><a href="#Useful">Useful Expessions</a></li>
+  </ul>
+</div>
+<div class="span9">
+  <section id="General">
+    <div class="page-header">
+      <h1>General</h1>
+      <p>Name:<%= @general.title %><%= @general.country_code %></p>
+      <div id="general" data-mercury="full">
+        <%= raw @general.general %>
+      </div>
+    </div>
+  </section>
+  <section id="AnnualEvents">
+    <div class="page-header">
+      <h1>Annual Events</h1>
+      <div id="annual_events" data-mercury="full">
+        <%= raw @general.annual_events %>
+      </div>
+    </div>
+  </section>
+  <section id="Transportation">
+    <div class="page-header">
+      <h1>Transportation</h1>
+      <div id="transportation" data-mercury="full">
+        <%= raw @general.transportation %>
+      </div>
+    </div>
+  </section>
+  <section id="BizHour">
+    <div class="page-header">
+      <h1>Bussiness hours</h1>
+      <div id="bizhour" data-mercury="full">
+        <%= raw @general.bizhour %>
+      </div>
+    </div>
+  </section>
+  <section id="Prices">
+    <div class="page-header">
+      <h1>Prices</h1>
+      <div id="prices" data-mercury="full">
+        <%= raw @general.prices %>
+      </div>
+    </div>
+  </section>
+  <section id="Money">
+    <div class="page-header">
+      <h1>Money</h1>
+      <div id="money" data-mercury="full">
+        <%= raw @general.money %>
+      </div>
+    </div>
+  </section>
+  <section id="Safety">
+    <div class="page-header">
+      <h1>Safety</h1>
+      <div id="safety" data-mercury="full">
+        <%= raw @general.safety %>
+      </div>
+    </div>
+  </section>
+  <section id="Emergency">
+    <div class="page-header">
+      <h1>Emergency</h1>
+      <div id="emergency" data-mercury="full">
+        <%= raw @general.emergency %>
+      </div>
+    </div>
+  </section>
+  <section id="Useful">
+    <div class="page-header">
+      <h1>Useful Expessions</h1>
+          <div id="useful" data-mercury="full">
+            <%= raw @general.useful %>
+          </div>
+    </div>
+  </section>
+</div>
 <%= link_to 'Edit', edit_general_path(@general) %> |
 <%= link_to 'Back', generals_path %>
