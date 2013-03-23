@@ -1,3 +1,18 @@
+GIT
+  remote: https://github.com/hayesr/mercury
+  revision: c3e17912270a716c4c26cd80bad0688468382d1d
+  specs:
+    mercury-rails (0.9.0)
+      coffee-rails (~> 3.2.2)
+      railties (~> 3.2)
+
+GIT
+  remote: https://github.com/swanandp/acts_as_list
+  revision: 86218c6a9d6404d7495f19c35de2f18cd9cf27ed
+  specs:
+    acts_as_list (0.2.0)
+      activerecord (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,7 +45,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    acts_as_list (0.1.4)
     addressable (2.3.3)
     anjlab-bootstrap-rails (2.3.1.1)
       railties (>= 3.0)
@@ -111,9 +125,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mercury-rails (0.9.0)
-      coffee-rails
-      railties (~> 3.2)
     mime-types (1.21)
     multi_json (1.6.1)
     multipart-post (1.2.0)
@@ -229,7 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.3.1)
-  acts_as_list
+  acts_as_list!
   anjlab-bootstrap-rails (>= 2.3)
   cancan
   cocoon
@@ -244,7 +255,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   less-rails
-  mercury-rails
+  mercury-rails!
   newrelic_rpm
   omniauth
   omniauth-facebook

@@ -37,13 +37,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
   gem 'compass-rails'
+  gem 'jquery-ui-rails'
+  gem 'jquery-rails'
   gem 'sassy-buttons'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -55,10 +54,10 @@ gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'cocoon'
 
-gem 'mercury-rails'
+gem 'mercury-rails', git: 'https://github.com/hayesr/mercury'
 
 # for sortable candidates
-gem 'acts_as_list'
+gem 'acts_as_list', git: 'https://github.com/swanandp/acts_as_list'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
