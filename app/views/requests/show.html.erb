@@ -22,6 +22,24 @@
   <dd><%= @request.budget_meal %></dd>
 </dl>
 
+<p>
+<b>candidates:</b>
+<% @candidates.each do |candidate| %>
+  <li>
+  <%= link_to candidate.comments, spot_candidate_path( candidate ) %>
+  </li>
+<% end %>
+</p>
+
+<p>
+  <b>plans:</b>
+  <% @plans.each do |plan| %>
+    <li>
+    <%= link_to plan.title, plan_path( plan ) %>
+    </li>
+  <% end %>
+</p>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               requests_path, :class => 'btn'  %>

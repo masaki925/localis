@@ -43,6 +43,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -55,6 +56,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'cocoon'
 
 gem 'mercury-rails'
+
+# for sortable candidates
+gem 'acts_as_list'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

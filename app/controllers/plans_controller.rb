@@ -14,6 +14,7 @@ class PlansController < ApplicationController
   # GET /plans/1.json
   def show
     @plan = Plan.find(params[:id])
+    @plan_days = @plan.plan_days
 
     respond_to do |format|
       format.html # show.html.erb

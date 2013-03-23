@@ -5,7 +5,7 @@ class CreatePlanSpots < ActiveRecord::Migration
       t.integer :spot_id
       t.text :comment
       t.integer :timetogo
-      t.integer :order
+      t.integer :position
 
       t.timestamps
     end

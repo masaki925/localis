@@ -4,6 +4,10 @@ Localis::Application.routes.draw do
 
   resources :generals
 
+  get "plan_days/show/:id" => "plan_days#show", :as => :plan_day
+  get "plan_days/edit/:id" => "plan_days#edit", :as => :edit_plan_day
+  post "cand_sort"     => "plan_days#cand_sort"
+
   resources :plans
 
   resources :users, shallow: true do

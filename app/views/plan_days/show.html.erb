@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan Day:</b>
+  id: <%= @plan_day.id %>
+  plan id: <%= @plan_day.plan_id %>
+  day: <%= @plan_day.day %>
+  <br>
+  spots:
+  <% @plan_day.spots.each do |spot| %>
+    name: <%= spot.name %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_plan_day_path(@plan_day) %> |

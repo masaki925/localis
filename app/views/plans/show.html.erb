@@ -20,6 +20,11 @@
   <%= @plan.purchased %>
 </p>
 
+<% @plan_days.each do |plan_day| %>
+  <li>
+  day <%= link_to plan_day.day, plan_day_path( plan_day ) %>
+  </li>
+<% end %>
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>

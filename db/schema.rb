@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.integer  "spot_id"
     t.text     "comment"
     t.integer  "timetogo"
-    t.integer  "order"
+    t.integer  "position"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
