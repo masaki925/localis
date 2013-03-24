@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.input :name, input_html: { id: "searchTextField" } %>
+    <%= f.input :name, input_html: { class: "gPlaceAutoComplete" } %>
     <img src="https://developers.google.com/maps/documentation/places/images/powered-by-google-on-white.png"/>
+    <%= f.input :address, input_html: { class: "gPlaceAutoComplete" } %>
   </div>
   <div class="actions">
     <%= f.submit %>
