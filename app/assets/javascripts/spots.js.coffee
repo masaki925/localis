@@ -18,10 +18,12 @@ initialize = ->
     google.maps.event.addListener autocomplete, "place_changed", ((autocomplete, input) ->
       ->
         place = autocomplete.getPlace()
-        if $( "#ggl_ref_" + input.id ).exists()
-          $( "#ggl_ref_" + input.id ).replaceWith( $("<input type='hidden' id='ggl_ref_" + input.id + "' value='" + place.reference + "'>") )
+        if $( "#gref_" + input.id ).exists()
+          $( "#gref_" + input.id ).replaceWith( $("<input type='hidden' id='gref_" + input.id + "' value='" + place.reference + "'>") )
         else
-          $("<input type='hidden' id='ggl_ref_" + input.id + "' value='" + place.reference + "'>").insertAfter( $("#" + input.id ) )
+          $("<input type='hidden' id='gref_" + input.id +
+                             "' name='" + input.name.replace(/\]$/, '_gref]') +
+                            "' value='" + place.reference + "'>").insertAfter( $("#" + input.id ) )
       )(autocomplete, inputs[i])
 
     i++
