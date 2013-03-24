@@ -10,13 +10,18 @@ class PlanDaysController < ApplicationController
 
   def cand_sort
     @plan_day = PlanDay.find( params[:id] )
-    @spots = Spot.find( params[:plan_spot] )
-    @plan_day.spots = @spots
 
-    params['plan_spot'].each_with_index do |spot_id, idx|
-      ps = PlanSpot.where( plan_day_id: @plan_day.id, spot_id: spot_id ).first
-      ps.position = idx + 1
-      ps.save
+    if params[:plan_spot]
+      @spots = Spot.find( params[:plan_spot] )
+      @plan_day.spots = @spots
+    
+      params['plan_spot'].each_with_index do |spot_id, idx|
+        ps = PlanSpot.where( plan_day_id: @plan_day.id, spot_id: spot_id ).first
+        ps.position = idx + 1
+        ps.save
+      end
+    else
+      @plan_day.spots = []
     end
 
     render :nothing => true
