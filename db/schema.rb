@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "spot_tours", ["tour_id"], :name => "index_spot_tours_on_tour_id"
 
   create_table "spots", :force => true do |t|
-    t.string   "google_spot_id"
+    t.string   "google_reference",               :null => false
     t.string   "name",             :limit => 45, :null => false
     t.string   "address",          :limit => 45
     t.string   "tel",              :limit => 45
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.datetime "updated_at",                     :null => false
   end
 
+  add_index "spots", ["google_reference"], :name => "index_spots_on_google_reference"
   add_index "spots", ["spot_category_id"], :name => "index_spots_on_spot_category_id"
 
   create_table "taggings", :force => true do |t|

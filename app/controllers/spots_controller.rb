@@ -1,23 +1,9 @@
 class SpotsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @spot = Spot.new
   end
 
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete 
+  def create_unless_exist
+    @spot = Spot.create_unless_exist(params[:spot])
   end
 end

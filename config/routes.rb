@@ -9,7 +9,9 @@ Localis::Application.routes.draw do
   post "plan_days/:id/cand_sort" => "plan_days#cand_sort"
 
   resources :plans
-  resources :spots
+
+  get  "spots/new"                 => "spots#new"
+  post "spots/create_unless_exist" => "spots#create_unless_exist"
 
   resources :users, shallow: true do
     resources :requests, except: :index do

@@ -1,4 +1,4 @@
-<%= simple_form_for(@spot) do |f| %>
+<%= simple_form_for @spot , :url => {:action => "create_unless_exist"} do |f| %>
   <% if @spot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
@@ -14,7 +14,6 @@
   <div class="field">
     <%= f.input :name, input_html: { class: "gPlaceAutoComplete" } %>
     <img src="https://developers.google.com/maps/documentation/places/images/powered-by-google-on-white.png"/>
-    <%= f.input :address, input_html: { class: "gPlaceAutoComplete" } %>
   </div>
   <div class="actions">
     <%= f.submit %>
