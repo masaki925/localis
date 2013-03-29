@@ -30,7 +30,7 @@ class PlanDaysController < ApplicationController
   def edit
     @plan_day   = PlanDay.find(params[:id])
     @request = @plan_day.plan.request
-    @candidates = @request.spot_candidates.filter( current_user )
+    @candidates = @request.candidates.filter( current_user )
 
     # TODO: plan_spots は、plan_day_spots になる?
     @plan_spots = @plan_day.spots.order('plan_spots.position ASC')

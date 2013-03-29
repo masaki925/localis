@@ -33,11 +33,11 @@ spots2 = [Spot.find(2), Spot.find(3)]
 request1 = Request.find(1)
 
 2.times do |i|
-  spot_candidate = SpotCandidate.create( { comments: "cand#{i+1}" } )
-  spot_candidate.spot_id    = spots1[i].id
-  spot_candidate.request_id = request1.id
-  spot_candidate.user = User.first
-  spot_candidate.save
+  candidate = Candidate.create( { comments: "cand#{i+1}" } )
+  candidate.spot_id    = spots1[i].id
+  candidate.request_id = request1.id
+  candidate.user = User.first
+  candidate.save
 end
 
 plan1 = Plan.create( { title: "plan1" } )
@@ -56,11 +56,11 @@ request2 = Request.find(2)
 
 2.times do |i|
   # cand のname は最終的に無くなる
-  spot_candidate = SpotCandidate.create( { comments: "cand#{i+3}" } )
-  spot_candidate.spot_id    = spots2[i].id
-  spot_candidate.request_id = request2.id
-  spot_candidate.user = User.first
-  spot_candidate.save
+  candidate = Candidate.create( { comments: "cand#{i+3}" } )
+  candidate.spot_id    = spots2[i].id
+  candidate.request_id = request2.id
+  candidate.user = User.first
+  candidate.save
 end
 
 plan2 = Plan.create( { title: "plan2" } )

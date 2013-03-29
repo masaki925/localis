@@ -17,7 +17,7 @@ function init_ggl_autocomplete () {
         if ($("#gref_" + input.id).exists()) {
           return $("#gref_" + input.id).replaceWith($("<input type='hidden' id='gref_" + input.id + "' value='" + place.reference + "'>"));
         } else {
-          return $("<input type='hidden' id='gref_" + input.id + "' name='" + input.name.replace(/\]$/, '_gref]') + "' value='" + place.reference + "'>").insertAfter($("#" + input.id));
+          return $("<input type='hidden' id='gref_" + input.id + "' name='" + input.name.replace(/name]$/, 'google_reference]') + "' value='" + place.reference + "'>").insertAfter($("#" + input.id));
         }
       };
     })(autocomplete, inputs[i]));

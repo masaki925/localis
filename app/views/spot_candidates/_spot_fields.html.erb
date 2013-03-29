@@ -1,6 +1,0 @@
-<div class="nested-fields">
-  <%= f.fields_for :spot, Spot.new do |spot| %>
-    <%= spot.input :name %>
-    <%= link_to_remove_association 'remove_spot', spot %>
-  <% end %>
-</div>

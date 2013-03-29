@@ -26,7 +26,7 @@
 <b>candidates:</b>
 <% @candidates.each do |candidate| %>
   <li>
-  <%= link_to candidate.comments, spot_candidate_path( candidate ) %>
+  <%= link_to candidate.comments, candidate_path( candidate ) %>
   </li>
 <% end %>
 </p>

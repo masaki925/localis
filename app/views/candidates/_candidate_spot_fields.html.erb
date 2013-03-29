@@ -1,0 +1,7 @@
+<% defined?(c_spot).nil? ? (spot_obj = Spot.new) : (spot_obj = c_spot) %>
+<div class="nested-fields">
+  <%= f.fields_for :spot, spot_obj do |spot| %>
+    <%= spot.input :name, input_html: { class: 'gPlaceAutoComplete' } %>
+    <%= link_to_remove_association 'remove_spot', spot %>
+  <% end %>
+</div>

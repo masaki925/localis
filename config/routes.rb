@@ -1,4 +1,5 @@
 Localis::Application.routes.draw do
+  get  "candidates/:id" => "candidates#show"
 
   mount Mercury::Engine => '/'
 
@@ -15,7 +16,7 @@ Localis::Application.routes.draw do
 
   resources :users, shallow: true do
     resources :requests, except: :index do
-      resources :spot_candidates
+      resources :candidates
     end
   end
 
