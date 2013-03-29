@@ -1,5 +1,5 @@
 class Candidate < ActiveRecord::Base
-  attr_accessible :candidate_spots_attributes
+  attr_accessible :candidate_spots_attributes, :comment
 
   belongs_to :request
   belongs_to :user
