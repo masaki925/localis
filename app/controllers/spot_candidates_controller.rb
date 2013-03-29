@@ -40,7 +40,8 @@ class SpotCandidatesController < ApplicationController
   # POST /spot_candidates
   # POST /spot_candidates.json
   def create
-    @spot_candidate = SpotCandidate.new(params[:spot_candidate])
+    debugger
+    @spot_candidate = SpotCandidate.new_for_localis( params[:spot_candidate], current_user )
 
     respond_to do |format|
       if @spot_candidate.save
