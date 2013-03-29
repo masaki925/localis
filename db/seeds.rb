@@ -23,7 +23,7 @@
 end
 
 3.times do |i|
-  Spot.create( { name: "spot#{i+1}" } )
+  Spot.create( { name: "spot#{i+1}", google_reference: "CoQBewAAACP8ZAvXwJ0Rw9Mav9Tewjlx2OYQ_XEry6C7tU0uAK2JU64X-nvwMAsbesGpDejiT0cMMy1RZGndCqvnQruOBDRUpl1UQSgT7fsr1VeelqpDBA6-tEkdpPQLqrUJs4PfRlxE4YoF28B-Su6Y7Mpu02mgxZHfjeMIn6t_cC_-TBPTEhCHIaISQ40ifTaQ3VdU40DyGhQ0_NFQeJfNwb9OEQgQtUlp-lPZkQ" } )
 end
 
 spots1 = [Spot.find(1), Spot.find(2)]
@@ -31,14 +31,11 @@ spots2 = [Spot.find(2), Spot.find(3)]
 
 # for request 1 ----------------------------
 request1 = Request.find(1)
-
-2.times do |i|
-  spot_candidate = SpotCandidate.create( { comments: "cand#{i+1}" } )
-  spot_candidate.spot_id    = spots1[i].id
-  spot_candidate.request_id = request1.id
-  spot_candidate.user = User.first
-  spot_candidate.save
-end
+candidate = Candidate.new
+candidate.spots = spots1
+candidate.request_id = request1.id
+candidate.user = User.first
+candidate.save
 
 plan1 = Plan.create( { title: "plan1" } )
 plan1.request = request1
@@ -53,15 +50,11 @@ end
 
 # for request 2 ----------------------------
 request2 = Request.find(2)
-
-2.times do |i|
-  # cand のname は最終的に無くなる
-  spot_candidate = SpotCandidate.create( { comments: "cand#{i+3}" } )
-  spot_candidate.spot_id    = spots2[i].id
-  spot_candidate.request_id = request2.id
-  spot_candidate.user = User.first
-  spot_candidate.save
-end
+candidate = Candidate.new
+candidate.spots = spots2
+candidate.request_id = request2.id
+candidate.user = User.first
+candidate.save
 
 plan2 = Plan.create( { title: "plan2" } )
 plan2.request = request2

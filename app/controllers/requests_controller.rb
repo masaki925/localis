@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
-    @candidates = @request.spot_candidates.filter( current_user )
+    @candidates = @request.candidates.filter( current_user )
     @plans = @request.plans
     authorize! :read, @request
     respond_to do |format|
