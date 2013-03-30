@@ -17,5 +17,6 @@
   <% end %>
 </p>
 
+<%= link_to 'plans for this request', request_plans_path( @candidate.request ) %> |
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
 <%= link_to 'Back', request_candidates_path(@candidate.request) %>

@@ -3,6 +3,7 @@ class PlansController < ApplicationController
   # GET /plans.json
   def index
     @plans = Plan.all
+    @request = Request.find( params[:request_id] )
 
     respond_to do |format|
       format.html # index.html.erb

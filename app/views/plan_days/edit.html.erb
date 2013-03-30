@@ -1,16 +1,18 @@
-<h1>Editing plan_day</h1>
-<div class="span3">
+<h1>Editing plan: <%= link_to @plan_day.plan.title, plan_path( @plan_day.plan ) %> day: <%= @plan_day.day %></h1>
+
 <%= hidden_field_tag :plan_day_id, @plan_day.id %>
+
 <div>
   <ul id="cand_spots" class="connectedSortable">
-    <li>candidate spots</li>
-    <% @cand_spots.each do |cand_spot| %>
-    <li id="cand_spot_<%= cand_spot.id %>">
-      <span class="handle">[drag]</span><%= cand_spot.name %>
-    </li>
+    <h2>candidate spots</h2>
+    <% if @cand_spots.empty? %>
+      <%= link_to 'add candidates', new_request_candidate_path( @plan_day.plan.request ) %>
+    <% else %>
+      <% @cand_spots.each do |cand_spot| %>
+        <li id="cand_spot_<%= cand_spot.id %>"><span class="handle">[drag]</span><%= cand_spot.name %></li>
+      <% end %>
     <% end %>
   </ul>
-</div>
 
   <div>
   <ul id="plan_spots" class="connectedSortable">

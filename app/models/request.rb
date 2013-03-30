@@ -12,11 +12,13 @@ class Request < ActiveRecord::Base
   has_many :request_hotels
   has_many :spots, :through => :request_hotels
   accepts_nested_attributes_for :request_hotels
+
   has_many :candidates do
     def filter( user_id )
       find(:all, conditions: { user_id: user_id } )
     end
   end
+
   has_many :plans
 
   belongs_to :user
@@ -25,6 +27,10 @@ class Request < ActiveRecord::Base
   # Alias for acts_as_taggable_on :tags
   acts_as_taggable
   acts_as_taggable_on :tags
+
+  def my_plans( user )
+    Plan.where( request_id: self.id, user_id: user.id )
+  end
 
   def days
     s_day = self.start_datetime.to_date

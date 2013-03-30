@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_filter :require_authentication
+
   # GET /requests
   # GET /requests.json
   def index
@@ -15,8 +17,7 @@ class RequestsController < ApplicationController
   def show
     @request    = Request.find(params[:id])
     @candidates = @request.candidates.filter( current_user )
-    @plans = @request.plans
-    authorize! :read, @request
+    @plans = @request.my_plans( current_user )
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @request }
