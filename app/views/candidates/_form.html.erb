@@ -1,0 +1,36 @@
+<%= simple_form_for [@request, @candidate], :url => {:action => action} do |f| %>
+  <% if @candidate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+      <% @candidate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>candidate spots</p>
+  <% if action == 'update' %>
+    <div id="exist_candidate_spots">
+      <% @candidate.candidate_spots.each do |c_spot| %>
+        <%= f.simple_fields_for :candidate_spots, c_spot do |candidate_spot| %>
+          <%= render 'candidate_spot_fields', :f => candidate_spot, :c_spot => c_spot.spot %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <div id="candidate_spots">
+    <%= f.simple_fields_for :candidate_spots, CandidateSpot.new do |candidate_spot| %>
+      <%= render 'candidate_spot_fields', :f => candidate_spot %>
+      <div class="links">
+        <%= link_to_add_association 'add_candidate_spot', f, :candidate_spots %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

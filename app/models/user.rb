@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   rolify
   # Include default devise modules. Others available are:
-  has_many :spot_candidates
-  has_many :spots, :through => :spot_candidates
+  has_many :candidates
+  has_many :spots, :through => :candidates
 
   has_many :requests
   has_many :plans

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312053557) do
+ActiveRecord::Schema.define(:version => 20130329140509) do
 
   create_table "activities", :force => true do |t|
     t.string   "name",        :limit => 45
@@ -19,6 +19,28 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  create_table "candidate_spots", :force => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "spot_id"
+    t.text     "recommend"
+    t.text     "comment"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "candidate_spots", ["candidate_id"], :name => "index_candidate_spots_on_candidate_id"
+  add_index "candidate_spots", ["spot_id"], :name => "index_candidate_spots_on_spot_id"
+
+  create_table "candidates", :force => true do |t|
+    t.integer  "request_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "candidates", ["request_id"], :name => "index_candidates_on_request_id"
+  add_index "candidates", ["user_id"], :name => "index_candidates_on_user_id"
 
   create_table "generals", :force => true do |t|
     t.string   "title",          :limit => 45
@@ -133,20 +155,6 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
-  create_table "spot_candidates", :force => true do |t|
-    t.integer  "request_id"
-    t.integer  "spot_id"
-    t.integer  "user_id"
-    t.text     "recommendation_text"
-    t.text     "comments"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  add_index "spot_candidates", ["request_id"], :name => "index_spot_candidates_on_request_id"
-  add_index "spot_candidates", ["spot_id"], :name => "index_spot_candidates_on_spot_id"
-  add_index "spot_candidates", ["user_id"], :name => "index_spot_candidates_on_user_id"
-
   create_table "spot_categories", :force => true do |t|
     t.string   "name",       :limit => 45
     t.datetime "created_at",               :null => false
@@ -181,7 +189,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
   add_index "spot_tours", ["tour_id"], :name => "index_spot_tours_on_tour_id"
 
   create_table "spots", :force => true do |t|
-    t.string   "google_spot_id"
+    t.string   "google_reference",               :null => false
     t.string   "name",             :limit => 45, :null => false
     t.string   "address",          :limit => 45
     t.string   "tel",              :limit => 45
@@ -193,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20130312053557) do
     t.datetime "updated_at",                     :null => false
   end
 
+  add_index "spots", ["google_reference"], :name => "index_spots_on_google_reference"
   add_index "spots", ["spot_category_id"], :name => "index_spots_on_spot_category_id"
 
   create_table "taggings", :force => true do |t|

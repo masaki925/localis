@@ -1,8 +1,7 @@
 class CreateSpots < ActiveRecord::Migration
   def change
     create_table :spots do |t|
-      t.string :google_spot_id# , null:false
-      #TODO　request_formの作成中。spotsのCRUDが実装されたらコメントを外す。
+      t.string :google_reference, null:false
       t.string :name, null:false, limit:45
 
       t.string :address, limit:45
@@ -15,5 +14,6 @@ class CreateSpots < ActiveRecord::Migration
       t.timestamps
     end
     add_index :spots, :spot_category_id
+    add_index :spots, :google_reference
   end
 end
