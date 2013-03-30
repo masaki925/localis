@@ -17,7 +17,6 @@ class Request < ActiveRecord::Base
       find(:all, conditions: { user_id: user_id } )
     end
   end
-  has_many :spots, :through => :candidates
   has_many :plans
 
   belongs_to :user
@@ -26,4 +25,10 @@ class Request < ActiveRecord::Base
   # Alias for acts_as_taggable_on :tags
   acts_as_taggable
   acts_as_taggable_on :tags
+
+  def days
+    debugger
+    self.start_datetime
+    self.end_datetime
+  end
 end

@@ -41,7 +41,11 @@ class PlansController < ApplicationController
   # POST /plans
   # POST /plans.json
   def create
-    @plan = Plan.new(params[:plan])
+    @plan         = Plan.new(params[:plan])
+    @plan.user    = current_user
+    @plan.request = Request.find( params[:request_id] )
+
+    #@plan.request.days
 
     respond_to do |format|
       if @plan.save

@@ -9,10 +9,10 @@
     <th></th>
   </tr>
 
-<% @candidates.each do |candidate| %>
+<% @candidates_mine.each do |candidate| %>
   <tr>
-    <td><%= candidate.request %></td>
-    <td><%= candidate.user %></td>
+    <td><%= link_to candidate.request.id, request_path( candidate.request ) %></td>
+    <td><%= link_to candidate.user.id,    user_path( candidate.user ) %></td>
     <td><%= link_to 'Show', candidate %></td>
     <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
     <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>

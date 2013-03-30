@@ -48,7 +48,7 @@
         <td><%= request.created_at %></td>
         <td><%= request.complete %></td>
         <td>
-          <%= link_to t('.new', :default => t("helpers.link.new")),new_request_candidate_path(request), :class => 'btn btn-mini' %>
+          <%= link_to 'candidates', request_candidates_path(request), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_request_path(request), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

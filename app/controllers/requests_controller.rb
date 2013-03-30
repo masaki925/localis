@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
-    @request = Request.find(params[:id])
+    @request    = Request.find(params[:id])
     @candidates = @request.candidates.filter( current_user )
     @plans = @request.plans
     authorize! :read, @request

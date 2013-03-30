@@ -44,8 +44,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Localis</a>
+          <a class="brand" href="/">Localis</a>
           <div class="container-fluid nav-collapse">
+            <ul class="nav pull-left">
+              <li><%= link_to 'requests', '/requests' %></li>
+              <li><%= link_to 'users', '/users' %></li>
+              <li><%= link_to 'plans', '/plans' %></li>
+            </ul>
             <ul class="nav pull-right">
               <% if user_signed_in? %>
                 <li><%= link_to "Sign out", destroy_user_session_path %></li>

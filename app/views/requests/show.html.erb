@@ -23,20 +23,34 @@
 </dl>
 
 <p>
-<b>candidates:</b>
-<% @candidates.each do |candidate| %>
-  <li>
-  <%= link_to candidate.comments, candidate_path( candidate ) %>
-  </li>
-<% end %>
+  <b>candidates:</b>
+  <% if @candidates.empty? %>
+    <br>you have no candidate for now. 
+    <li>
+      <%= link_to 'create new candidate', new_request_candidate_path( @request ) %>
+    </li>
+  <% else %>
+    <% @candidates.each do |candidate| %>
+      <li>
+      <%= link_to candidate.id, candidate_path( candidate ) %>
+      </li>
+    <% end %>
+  <% end %>
 </p>
 
 <p>
   <b>plans:</b>
-  <% @plans.each do |plan| %>
+  <% if @plans.empty? %>
+    <br>you have no plan for now. 
     <li>
-    <%= link_to plan.title, plan_path( plan ) %>
+      <%= link_to 'create new plan', new_request_plan_path( @request ) %>
     </li>
+  <% else %>
+    <% @plans.each do |plan| %>
+      <li>
+      <%= link_to plan.title, plan_path( plan ) %>
+      </li>
+    <% end %>
   <% end %>
 </p>
 
