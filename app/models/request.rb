@@ -27,8 +27,8 @@ class Request < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   def days
-    debugger
-    self.start_datetime
-    self.end_datetime
+    s_day = self.start_datetime.to_date
+    e_day = self.end_datetime.to_date
+    (e_day - s_day).to_i + 1
   end
 end

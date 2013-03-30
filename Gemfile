@@ -69,8 +69,9 @@ gem 'acts_as_list', git: 'https://github.com/swanandp/acts_as_list'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'foreman'
+gem 'pry-remote'
 # Deploy with Capistrano
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

@@ -45,10 +45,12 @@ class PlansController < ApplicationController
     @plan.user    = current_user
     @plan.request = Request.find( params[:request_id] )
 
-    #@plan.request.days
-
     respond_to do |format|
       if @plan.save
+        @plan.request.days.times do |day|
+          @plan.plan_days << PlanDay.create( { plan_id: @plan.id, day: day+1 } )
+        end
+
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
         format.json { render json: @plan, status: :created, location: @plan }
       else
