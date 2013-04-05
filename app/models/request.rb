@@ -6,11 +6,9 @@ class Request < ActiveRecord::Base
                   :request_hotels_attributes
 
   has_many :request_spots
-  has_many :spots, :through => :request_spots
   accepts_nested_attributes_for :request_spots
 
   has_many :request_hotels
-  has_many :spots, :through => :request_hotels
   accepts_nested_attributes_for :request_hotels
 
   has_many :candidates do
@@ -27,6 +25,10 @@ class Request < ActiveRecord::Base
   # Alias for acts_as_taggable_on :tags
   acts_as_taggable
   acts_as_taggable_on :tags
+
+  def spots
+    self.request_spots + self.request_hotels
+  end
 
   def my_plans( user )
     Plan.where( request_id: self.id, user_id: user.id )

@@ -30,6 +30,7 @@ class CandidatesController < ApplicationController
   def new
     @request   = Request.find( params[:request_id] )
     @candidate = Candidate.new
+    @requested_spots = @request.spots
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +50,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(params[:candidate])
     @candidate.user = current_user
     @candidate.request_id = params[:request_id]
+    @requested_spots = @candidate.request.spots
 
     respond_to do |format|
       if @candidate.save
