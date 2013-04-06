@@ -15,6 +15,7 @@ group :test, :development do
   gem 'factory_girl'
   gem 'fabrication'
   gem 'faker'
+  gem 'pry-remote'
 end
 
 group :development do

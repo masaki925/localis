@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<div class="span3">
 <p>
   <b>Plan Day:</b>
   id: <%= @plan_day.id %>
@@ -7,10 +6,17 @@
   day: <%= @plan_day.day %>
   <br>
   spots:
-  <% @plan_day.spots.each do |spot| %>
-    name: <%= spot.name %>
+  <% @plan_day.spots.each do |plan_spot| %>
+    name:
+    <li>
+      <%= plan_spot.name %>
+      <%= hidden_field_tag :plan_spot, plan_spot.google_reference %>
+    </li>
   <% end %>
 </p>
-
+</div>
+<div class="span9">
+<div id="map-canvas"></div>
+</div>
 
 <%= link_to 'Edit', edit_plan_day_path(@plan_day) %> |
