@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates_all  = Candidate.all
+    @candidates      = Candidate.all
     @candidates_mine = Candidate.where( request_id: params[:request_id], user_id: current_user )
 
     respond_to do |format|

@@ -12,10 +12,12 @@ ruby '2.0.0'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'fabrication'
   gem 'faker'
   gem 'pry-remote'
+  gem 'spork'
+  gem 'simplecov'
 end
 
 group :development do
@@ -69,7 +71,6 @@ gem 'acts_as_list', git: 'https://github.com/swanandp/acts_as_list'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'foreman'
-gem 'pry-remote'
 # Deploy with Capistrano
 # gem 'capistrano'
 
