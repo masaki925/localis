@@ -14,10 +14,11 @@ function init_ggl_autocomplete () {
     google.maps.event.addListener(autocomplete, "place_changed", (function(autocomplete, input) {
       return function() {
         var place = autocomplete.getPlace();
-        if ($("#gref_" + input.id).exists()) {
-          return $("#gref_" + input.id).replaceWith($("<input type='hidden' id='gref_" + input.id + "' value='" + place.reference + "'>"));
+        var gName = input.name.replace(/name]$/, 'google_reference]');
+        if ( $("#gref_" + input.id).exists() ) {
+          return $("#gref_" + input.id).replaceWith($("<input type='hidden' id='gref_" + input.id + "' name='" + gName + "' value='" + place.reference + "'>"));
         } else {
-          return $("<input type='hidden' id='gref_" + input.id + "' name='" + input.name.replace(/name]$/, 'google_reference]') + "' value='" + place.reference + "'>").insertAfter($("#" + input.id));
+          return $("<input type='hidden' id='gref_" + input.id + "' name='" + gName + "' value='" + place.reference + "'>").insertAfter($("#" + input.id));
         }
       };
     })(autocomplete, inputs[i]));
