@@ -12,6 +12,19 @@
   <% end %>
 
   <p>candidate spots</p>
+
+  <% if action == 'create' %>
+    <div id="requested_spots">
+      <%= label_tag 'requested from traveler' %>
+      <% @requested_spots.each do |r_spot| %>
+        <div>
+          <input value="<%= r_spot.name %>" class="string" type="text" readonly="readonly">
+          <input value="<%= r_spot.id %>" name="requested_spots[]" type="hidden">
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <% if action == 'update' %>
     <div id="exist_candidate_spots">
       <% @candidate.candidate_spots.each do |c_spot| %>
@@ -21,6 +34,7 @@
       <% end %>
     </div>
   <% end %>
+
   <div id="candidate_spots">
     <%= f.simple_fields_for :candidate_spots, CandidateSpot.new do |candidate_spot| %>
       <%= render 'candidate_spot_fields', :f => candidate_spot %>
@@ -28,6 +42,9 @@
         <%= link_to_add_association 'add_candidate_spot', f, :candidate_spots %>
       </div>
     <% end %>
+  </div>
+
+  <div id="removed_spots">
   </div>
 
   <div class="actions">

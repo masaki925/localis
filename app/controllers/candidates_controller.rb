@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates_all  = Candidate.all
+    @candidates      = Candidate.all
     @candidates_mine = Candidate.where( request_id: params[:request_id], user_id: current_user )
 
     respond_to do |format|
@@ -29,7 +29,13 @@ class CandidatesController < ApplicationController
   # GET /candidates/new.json
   def new
     @request   = Request.find( params[:request_id] )
+    if already_have_candidate = Candidate.where( user_id: current_user.id, request_id: @request.id ).first
+      redirect_to edit_candidate_path( already_have_candidate )
+      return
+    end
+
     @candidate = Candidate.new
+    @requested_spots = @request.spots
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,6 +58,10 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
+        @candidate.candidate_spots << params[:requested_spots].map { |spot_id|
+          CandidateSpot.new( spot_id: spot_id,
+                             recommend: 'requested from traveler' ) }
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
         format.json { render json: @candidate, status: :created, location: @candidate }
       else
@@ -68,6 +78,8 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.update_attributes(params[:candidate])
+        @candidate.remove_spot_relations( params[:removed_spots] ) if params[:removed_spots] and not params[:removed_spots].empty?
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
         format.json { head :no_content }
       else

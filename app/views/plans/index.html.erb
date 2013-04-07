@@ -1,4 +1,4 @@
-<h1>Listing plans</h1>
+<h1>Listing plans for request: <%= link_to @request.title, request_path( @request ) %></h1>
 
 <table>
   <tr>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Plan', new_plan_path %>
+<%= link_to 'New Plan', new_request_plan_path( @request ) %>

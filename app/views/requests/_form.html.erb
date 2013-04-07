@@ -1,4 +1,16 @@
 <%= simple_form_for @request, :url => {:action => "create"}, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+        <% @request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.input :username %>
   <%= f.input :title %>
   <%= f.input :start_datetime %>

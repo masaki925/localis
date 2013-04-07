@@ -12,10 +12,12 @@ ruby '2.0.0'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'fabrication'
   gem 'faker'
   gem 'pry-remote'
+  gem 'spork'
+  gem 'simplecov'
 end
 
 group :development do
@@ -73,4 +75,4 @@ gem 'foreman'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

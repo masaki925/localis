@@ -4,11 +4,11 @@ describe CandidatesController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/candidates").should route_to("candidates#index")
+      get("/requests/1/candidates").should route_to("candidates#index", :request_id => "1")
     end
 
     it "routes to #new" do
-      get("/candidates/new").should route_to("candidates#new")
+      get("/requests/1/candidates/new").should route_to("candidates#new", :request_id => "1")
     end
 
     it "routes to #show" do
@@ -20,7 +20,7 @@ describe CandidatesController do
     end
 
     it "routes to #create" do
-      post("/candidates").should route_to("candidates#create")
+      post("/requests/1/candidates").should route_to("candidates#create", :request_id => "1")
     end
 
     it "routes to #update" do
