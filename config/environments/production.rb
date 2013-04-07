@@ -64,7 +64,7 @@ Localis::Application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 
-  config.assets.precompile += %w( mercury.js mercury.css mercury_overrides.css jquery-1.7.js )
+  config.assets.precompile += %w( mercury.js mercury.css mercury_overrides.css jquery.js )
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
