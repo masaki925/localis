@@ -78,6 +78,8 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.update_attributes(params[:candidate])
+        @candidate.remove_spot_relations( params[:removed_spots] ) if params[:removed_spots] and not params[:removed_spots].empty?
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
         format.json { head :no_content }
       else
