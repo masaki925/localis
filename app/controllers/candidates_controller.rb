@@ -29,6 +29,11 @@ class CandidatesController < ApplicationController
   # GET /candidates/new.json
   def new
     @request   = Request.find( params[:request_id] )
+    if already_have_candidate = Candidate.where( user_id: current_user.id, request_id: @request.id ).first
+      redirect_to edit_candidate_path( already_have_candidate )
+      return
+    end
+
     @candidate = Candidate.new
     @requested_spots = @request.spots
 
@@ -50,10 +55,13 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(params[:candidate])
     @candidate.user = current_user
     @candidate.request_id = params[:request_id]
-    @requested_spots = @candidate.request.spots
 
     respond_to do |format|
       if @candidate.save
+        @candidate.candidate_spots << params[:requested_spots].map { |spot_id|
+          CandidateSpot.new( spot_id: spot_id,
+                             recommend: 'requested from traveler' ) }
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
         format.json { render json: @candidate, status: :created, location: @candidate }
       else

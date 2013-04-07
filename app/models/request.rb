@@ -27,7 +27,7 @@ class Request < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   def spots
-    self.request_spots + self.request_hotels
+    self.request_spots.map {|rs| rs.spot} + self.request_hotels.map {|rh| rh.spot}
   end
 
   def my_plans( user )
