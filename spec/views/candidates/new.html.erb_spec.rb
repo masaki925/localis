@@ -2,10 +2,8 @@ require 'spec_helper'
 
 describe "candidates/new" do
   before(:each) do
-    assign(:candidate, stub_model(Candidate,
-      :request => nil,
-      :user => nil
-    ).as_new_record)
+    assign(:candidate, FactoryGirl.build( :candidate ) )
+    assign(:request, FactoryGirl.create( :request ) )
   end
 
   it "renders new candidate form" do

@@ -2,7 +2,8 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.all
+    @plans = Plan.where( request_id: params[:request_id] )
+    @request = Request.find( params[:request_id] )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,10 +46,12 @@ class PlansController < ApplicationController
     @plan.user    = current_user
     @plan.request = Request.find( params[:request_id] )
 
-    #@plan.request.days
-
     respond_to do |format|
       if @plan.save
+        @plan.request.days.times do |day|
+          @plan.plan_days << PlanDay.create( { plan_id: @plan.id, day: day+1 } )
+        end
+
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
         format.json { render json: @plan, status: :created, location: @plan }
       else

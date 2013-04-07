@@ -14,6 +14,6 @@ class CreateSpots < ActiveRecord::Migration
       t.timestamps
     end
     add_index :spots, :spot_category_id
-    add_index :spots, :google_reference
+    add_index :spots, :name
   end
 end
