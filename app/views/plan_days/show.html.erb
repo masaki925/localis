@@ -10,14 +10,22 @@
     name:
     <li>
       <%= plan_spot.name %>
-      <%= hidden_field_tag :plan_spot, plan_spot.google_reference %>
+      <%#= hidden_field_tag :latitude, '35.670168' %>
+      <%#= hidden_field_tag :longitude, '139.70268699999997' %>
     </li>
   <% end %>
+  <li class="stub">
+    <%= hidden_field_tag :latitude, '34.01912622906639' %>
+    <%= hidden_field_tag :longitude, '-118.50487513313143' %>
+  </li>
+  <li class="stub">
+    <%= hidden_field_tag :latitude, '33.99731753560849' %>
+    <%= hidden_field_tag :longitude, '-118.487190493284' %>
+  </li>
 </p>
 </div>
 <div class="span9">
 <div id="map_canvas"></div>
 </div>
-
 <%= link_to 'Edit', edit_plan_day_path(@plan_day) %> |
 <%= link_to 'Back', plan_path( @plan_day.plan ) %>

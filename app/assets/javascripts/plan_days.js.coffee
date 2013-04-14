@@ -2,6 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
+  mapOptions =
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  map = new google.maps.Map $('#map_canvas').get(0), mapOptions
+  service = new google.maps.places.PlacesService(map)
+  directionsDisplay = new google.maps.DirectionsRenderer()
+  directionsService = new google.maps.DirectionsService()
+
   $("#cand_spots, #plan_spots").sortable
     connectWith: ".connectedSortable"
     axis: "y"
@@ -22,30 +31,21 @@ $ ->
         dataType: "script"
         complete: (request) ->
         url: "/plan_days/" + plan_day_id + "/cand_sort"
+  spots = $('.span3 li.stub')
+  waypoints = []
+  spots.each (index) ->
+    switch index
+      when 0, spots.length - 1
+        console.log "0"
+      else
+        waypoints.push location:new google.maps.LatLng(spots.find("#latitude")[index].value, spots.find("#longitude")[index].value)
+  request =
+    origin: new google.maps.LatLng(spots.find('#latitude')[0].value, spots.find('#longitude')[0].value),
+    waypoints: waypoints,
+    destination: new google.maps.LatLng(spots.find('#latitude')[spots.length - 1].value, spots.find('#longitude')[spots.length - 1].value),
+    travelMode: google.maps.TravelMode.TRANSIT
 
-  mapOptions =
-    center: new google.maps.LatLng(-34.397, 150.644),
-    zoom: 8,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-
-  map = new google.maps.Map $('#map_canvas').get(0), mapOptions
-  bounds = new google.maps.LatLngBounds()
-  infowindow = new google.maps.InfoWindow()
-  service = new google.maps.places.PlacesService(map)
-
-  spots_array = $('li input#plan_spot')
-  spots_array.each ->
-    request = { reference: this.value }
-    service.getDetails request, (place, status) ->
-      if status is google.maps.places.PlacesServiceStatus.OK
-        map_location = place.geometry.location
-        bounds.extend(map_location)
-        map.fitBounds(bounds)
-
-        marker = new google.maps.Marker(
-          map: map
-          position: map_location
-        )
-        google.maps.event.addListener marker, 'click', ->
-          infowindow.setContent(place.name)
-          infowindow.open(map, this)
+  directionsService.route request, (response, status) ->
+    if status is google.maps.DirectionsStatus.OK
+      directionsDisplay.setDirections(response)
+      directionsDisplay.setMap(map)
