@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329140509) do
+ActiveRecord::Schema.define(:version => 20130414044548) do
 
   create_table "activities", :force => true do |t|
     t.string   "name",        :limit => 45
@@ -199,9 +199,11 @@ ActiveRecord::Schema.define(:version => 20130329140509) do
     t.string   "station",          :limit => 45
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.string   "lat"
+    t.string   "lng"
   end
 
-  add_index "spots", ["google_reference"], :name => "index_spots_on_google_reference"
+  add_index "spots", ["name"], :name => "index_spots_on_name"
   add_index "spots", ["spot_category_id"], :name => "index_spots_on_spot_category_id"
 
   create_table "taggings", :force => true do |t|

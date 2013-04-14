@@ -60,9 +60,11 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        @candidate.candidate_spots << params[:requested_spots].map { |spot_id|
-          CandidateSpot.new( spot_id: spot_id,
-                             recommend: 'requested from traveler' ) }
+        if params[:requested_spots]
+          @candidate.candidate_spots << params[:requested_spots].map { |spot_id|
+            CandidateSpot.new( spot_id: spot_id,
+                               recommend: 'requested from traveler' ) }
+        end
 
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
         format.json { render json: @candidate, status: :created, location: @candidate }

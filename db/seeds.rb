@@ -23,7 +23,11 @@
 end
 
 3.times do |i|
-  Spot.create( { name: "spot#{i+1}", google_reference: "CoQBewAAACP8ZAvXwJ0Rw9Mav9Tewjlx2OYQ_XEry6C7tU0uAK2JU64X-nvwMAsbesGpDejiT0cMMy1RZGndCqvnQruOBDRUpl1UQSgT7fsr1VeelqpDBA6-tEkdpPQLqrUJs4PfRlxE4YoF28B-Su6Y7Mpu02mgxZHfjeMIn6t_cC_-TBPTEhCHIaISQ40ifTaQ3VdU40DyGhQ0_NFQeJfNwb9OEQgQtUlp-lPZkQ" } )
+  Spot.create( { name: "spot#{i+1}",
+                 google_reference: "CoQBewAAACP8ZAvXwJ0Rw9Mav9Tewjlx2OYQ_XEry6C7tU0uAK2JU64X-nvwMAsbesGpDejiT0cMMy1RZGndCqvnQruOBDRUpl1UQSgT7fsr1VeelqpDBA6-tEkdpPQLqrUJs4PfRlxE4YoF28B-Su6Y7Mpu02mgxZHfjeMIn6t_cC_-TBPTEhCHIaISQ40ifTaQ3VdU40DyGhQ0_NFQeJfNwb9OEQgQtUlp-lPZkQ",
+                 lat: "35.7119#{i}14",
+                 lng: '139.79662210000004'
+  } )
 end
 
 spots1 = [Spot.find(1), Spot.find(2)]
