@@ -1,6 +1,7 @@
-html, body {
-  overflow: scroll !important;
-}
 // import original bootstrap
 @import "twitter/bootstrap";
 @import "twitter/bootstrap-responsive";
+
+html, body {
+  overflow: scroll;
+}

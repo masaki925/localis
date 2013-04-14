@@ -38,7 +38,8 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
+  #gem 'sass-rails-bootstrap', :git => 'https://github.com/voidseeker/sass-rails-bootstrap.git'
+  gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :git => 'git://github.com/anjlab/bootstrap-rails.git'
   gem 'compass-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-rails'
