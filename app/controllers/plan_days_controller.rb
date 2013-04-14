@@ -15,7 +15,7 @@ class PlanDaysController < ApplicationController
     @plan_spots = @plan_day.spots.order('plan_spots.position ASC')
 
     cand = Candidate.where( request_id: @request.id, user_id: current_user.id ).first
-    @unselected_spots = cand.spots - @plan_spots
+    @unselected_spots = cand.nil? ? [] : (cand.spots - @plan_spots)
     @selected_spots   = @plan_spots  # 便宜上 代入
   end
 

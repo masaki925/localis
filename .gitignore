@@ -19,3 +19,4 @@ pickle-email-*.html
 .env
 erd.pdf
 *.swp
+*.DS_Store
