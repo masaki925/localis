@@ -189,8 +189,8 @@ ActiveRecord::Schema.define(:version => 20130414044548) do
   add_index "spot_tours", ["tour_id"], :name => "index_spot_tours_on_tour_id"
 
   create_table "spots", :force => true do |t|
-    t.string   "google_reference",               :null => false
-    t.string   "name",             :limit => 45, :null => false
+    t.string   "google_reference",                :null => false
+    t.string   "name",             :limit => 300, :null => false
     t.string   "address",          :limit => 45
     t.string   "tel",              :limit => 45
     t.integer  "take_time"

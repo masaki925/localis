@@ -23,12 +23,16 @@ $ ->
     opacity: 0.4
     scroll: true
 
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-  })
+  mapOptions =
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+
+  map = new google.maps.Map $('#map_canvas').get(0), mapOptions
   bounds = new google.maps.LatLngBounds()
   infowindow = new google.maps.InfoWindow()
   service = new google.maps.places.PlacesService(map)
+
   spots_array = $('li input#plan_spot')
   spots_array.each ->
     request = { reference: this.value }
@@ -37,7 +41,7 @@ $ ->
         map_location = place.geometry.location
         bounds.extend(map_location)
         map.fitBounds(bounds)
-        location_LatLng.push(map_location)
+
         marker = new google.maps.Marker(
           map: map
           position: map_location

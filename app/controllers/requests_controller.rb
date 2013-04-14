@@ -48,8 +48,6 @@ class RequestsController < ApplicationController
     authorize! :create, @request
     respond_to do |format|
       if @request.save
-        current_user.add_role :requester
-        current_user.remove_role :guest
         UserMailer.inform_planner_of(@request).deliver
 
         format.html { redirect_to @request, notice: 'Request was successfully created.' }

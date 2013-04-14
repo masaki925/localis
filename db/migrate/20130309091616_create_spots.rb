@@ -2,7 +2,7 @@ class CreateSpots < ActiveRecord::Migration
   def change
     create_table :spots do |t|
       t.string :google_reference, null:false
-      t.string :name, null:false, limit:45
+      t.string :name, null:false, limit:300
 
       t.string :address, limit:45
       t.string :tel, limit:45
