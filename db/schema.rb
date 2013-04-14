@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(:version => 20130414044548) do
     t.integer  "spot_category_id"
     t.float    "cost"
     t.string   "station",          :limit => 45
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "lat"
     t.string   "lng"
   end

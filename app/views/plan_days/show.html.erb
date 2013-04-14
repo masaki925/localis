@@ -10,18 +10,10 @@
     name:
     <li>
       <%= plan_spot.name %>
-      <%#= hidden_field_tag :latitude, '35.670168' %>
-      <%#= hidden_field_tag :longitude, '139.70268699999997' %>
+      <%= hidden_field_tag :latitude, plan_spot.lat %>
+      <%= hidden_field_tag :longitude, plan_spot.lng %>
     </li>
   <% end %>
-  <li class="stub">
-    <%= hidden_field_tag :latitude, '34.01912622906639' %>
-    <%= hidden_field_tag :longitude, '-118.50487513313143' %>
-  </li>
-  <li class="stub">
-    <%= hidden_field_tag :latitude, '33.99731753560849' %>
-    <%= hidden_field_tag :longitude, '-118.487190493284' %>
-  </li>
 </p>
 </div>
 <div class="span9">
