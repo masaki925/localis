@@ -32,18 +32,18 @@ $ ->
   directionsDisplay = new google.maps.DirectionsRenderer()
   directionsService = new google.maps.DirectionsService()
 
-  spots = $('.span3 li')
+  spots = $('.spots section')
   waypoints = []
   spots.each (index) ->
     switch index
       when 0, spots.length - 1
         console.log "0"
       else
-        waypoints.push location:new google.maps.LatLng(spots.find("#latitude")[index].value, spots.find("#longitude")[index].value)
+        waypoints.push location:new google.maps.LatLng(spots.find("input#latitude")[index].value, spots.find("input#longitude")[index].value)
   request =
-    origin: new google.maps.LatLng(spots.find('#latitude')[0].value, spots.find('#longitude')[0].value),
+    origin: new google.maps.LatLng(spots.find('input#latitude')[0].value, spots.find('input#longitude')[0].value),
     waypoints: waypoints,
-    destination: new google.maps.LatLng(spots.find('#latitude')[spots.length - 1].value, spots.find('#longitude')[spots.length - 1].value),
+    destination: new google.maps.LatLng(spots.find('input#latitude')[spots.length - 1].value, spots.find('input#longitude')[spots.length - 1].value),
     travelMode: google.maps.TravelMode.WALKING
 
   directionsService.route request, (response, status) ->

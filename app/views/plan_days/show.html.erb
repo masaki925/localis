@@ -1,23 +1,68 @@
-<div class="span3">
-<p>
-  <b>Plan Day:</b>
-  id: <%= @plan_day.id %>
-  plan id: <%= @plan_day.plan_id %>
-  day: <%= @plan_day.day %>
-  <br>
-  spots:
-  <% @plan_day.spots.each do |plan_spot| %>
-    name:
+<header id="title">
+  <h1>Amazing Europe</h1>
+  <ul class="nav nav-pills">
     <li>
-      <%= plan_spot.name %>
+      <div class="country">
+        United Kingdom
+        <span class="city">
+          London
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="country">
+        United Kingdom
+        <span class="city">
+          London
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="country">
+        United Kingdom
+        <span class="city">
+          London
+        </span>
+      </div>
+    </li>
+  </ul>
+</header>
+<div class="row-fluid">
+  <div class="span3">
+    <section>
+      <h2>United Kingdom<span class="city">London</span></h2>
+      <div class="left-arrow"><</div>
+      <div class="date">28/November/2013</div>
+      <div class="right-arrow">></div>
+      <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
+      <div class="budget">15,321<span class="currency">KES</span></div>
+    </section>
+    <div class="accom-options">
+      Accomodiation options
+    </div>
+    <div class="spots">
+      <div class="morning"></div>
+      <% @plan_day.spots.each_with_index do |plan_spot, index| %>
+      <section>
+      <div class="number"><%= index %></div>
+      <img class="pict">pic</img>
+      <h3><%= plan_spot.name %></h3>
+      <div class="category">Museum</div>
+      <div class="star">★★☆☆☆</div>
+      <div class="tags">#Art, animal, wild life</div>
+      <div class="budget">150<span class="currency">KES</span></div>
+      <div class="time">1<span class="hour">hour</span></div>
+      <details>See datails</details>
       <%= hidden_field_tag :latitude, plan_spot.lat %>
       <%= hidden_field_tag :longitude, plan_spot.lng %>
-    </li>
-  <% end %>
-</p>
-</div>
-<div class="span9">
-<div id="map_canvas"></div>
+      </section>
+      <% end %>
+      <div class="night"></div>
+    </div>
+  </div>
+  <div class="span9">
+    <div id="map_canvas"></div>
+  </div>
 </div>
 <%= link_to 'Edit', edit_plan_day_path(@plan_day) %> |
 <%= link_to 'Back', plan_path( @plan_day.plan ) %>
