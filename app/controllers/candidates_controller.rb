@@ -46,6 +46,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/1/edit
   def edit
     @candidate = Candidate.find(params[:id])
+    # TODO: wanna be uniq by spot id
+    @candidate_spots = @candidate.candidate_spots
     @request   = @candidate.request
   end
 

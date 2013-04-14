@@ -13,7 +13,7 @@
 
   <p>candidate spots</p>
 
-  <% if action == 'create' %>
+  <% if action == 'create' and @requested_spots %>
     <div id="requested_spots">
       <%= label_tag 'requested from traveler' %>
       <% @requested_spots.each do |r_spot| %>
@@ -27,7 +27,7 @@
 
   <% if action == 'update' %>
     <div id="exist_candidate_spots">
-      <% @candidate.candidate_spots.each do |c_spot| %>
+      <% @candidate_spots.each do |c_spot| %>
         <%= f.simple_fields_for :candidate_spots, c_spot do |candidate_spot| %>
           <%= render 'candidate_spot_fields', :f => candidate_spot, :c_spot => c_spot.spot %>
         <% end %>

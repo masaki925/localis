@@ -3,29 +3,45 @@
 <%= hidden_field_tag :plan_day_id, @plan_day.id %>
 
 <div>
-  <ul id="cand_spots" class="connectedSortable">
-    <h2>candidate spots</h2>
-    <% if @cand_spots.empty? %>
-      <%= link_to 'add candidates', new_request_candidate_path( @plan_day.plan.request ) %>
+  <ul id="unselected_spots">
+    <h2>unselected candidate spots</h2>
+    <% if @unselected_spots.empty? %>
+      <%= link_to 'add candidates', new_request_candidate_path( @request ) %>
     <% else %>
-      <% @cand_spots.each do |cand_spot| %>
-        <li id="cand_spot_<%= cand_spot.id %>"><span class="handle">[drag]</span><%= cand_spot.name %></li>
+      <% @unselected_spots.each do |unselected_spot| %>
+        <li id="unselected_spot_<%= unselected_spot.id %>"><%= unselected_spot.name %></li>
       <% end %>
     <% end %>
   </ul>
+</div>
 
-  <div>
-  <ul id="plan_spots" class="connectedSortable">
-    <li>plan spots</li>
-    <% @plan_spots.each do |plan_spot| %>
-      <li id="plan_spot_<%= plan_spot.id %>"><span class="handle">[drag]</span><%= plan_spot.name %>
-        <%= hidden_field_tag :plan_spot, plan_spot.google_reference %>
-      </li>
+<div>
+  <ul id="selected_spots">
+    <h2>selected candidate spots</h2>
+    <% unless @selected_spots.empty? %>
+      <% @selected_spots.each do |selected_spot| %>
+        <li id="selected_spot_<%= selected_spot.id %>"><%= selected_spot.name %></li>
+      <% end %>
     <% end %>
   </ul>
-  </div>
-<%= link_to 'Show', plan_day_path( @plan_day ) %> |
 </div>
+  
+<div>
+  <%= form_tag("/plan_days/#{@plan_day.id}", :method => "put") do %>
+    <ul id="plan_spots" class="connectedSortable">
+      <h2>plan spots</h2>
+      <% @plan_spots.each do |plan_spot| %>
+        <li id="plan_spot_<%= plan_spot.id %>">
+          <span class="handle">[drag]</span><%= plan_spot.name %>
+          <input type="hidden" name='plan_spot[]' value='<%= plan_spot.id %>'/>
+          <span class="rmSpot">[x]</span>
+        </li>
+      <% end %>
+    </ul>
+    <%= submit_tag("Save") %>
+  <% end %>
+</div>
+
 <div class="span9">
   <div id="map-canvas"></div>
 </div>

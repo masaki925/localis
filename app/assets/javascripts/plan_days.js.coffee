@@ -1,27 +1,28 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+setRmSpot = ->
+  $(".rmSpot").click (e) ->
+    e.target.parentElement.remove()
+
 $ ->
-  $("#cand_spots, #plan_spots").sortable
-    connectWith: ".connectedSortable"
+  setRmSpot()
+
+  cand_elems = $.merge( $("#unselected_spots li"), $("#selected_spots li") )
+  cand_elems.click (e) ->
+    li_elem = $("<li><span class='handle'>[drag]</span></li>")
+    li_elem.append( $("<input type='hidden' name='plan_spot[]' value='" + e.target.id.replace(/(un)?selected_spot_/, "") + "'>" + e.target.textContent + "</input><span class='rmSpot'> [x]</span>") )
+    $("#plan_spots").append( li_elem )
+    setRmSpot()
+
+  $("#plan_spots").sortable
     axis: "y"
-    dropOnEmpty: true
     handle: ".handle"
     cursor: "crosshair"
     items: "li"
     opacity: 0.4
     scroll: true
-    update: ->
-      $("[id^=cand_spot_]").attr "id", (i, old_id) ->
-        old_id.replace "cand", "plan"
 
-      plan_day_id = $("#plan_day_id").val()
-      $.ajax
-        type: "post"
-        data: $("#plan_spots").sortable("serialize")
-        dataType: "script"
-        complete: (request) ->
-        url: "/plan_days/" + plan_day_id + "/cand_sort"
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
   })

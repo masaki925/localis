@@ -1,15 +1,17 @@
 class PlanDay < ActiveRecord::Base
-  attr_accessible :day, :plan_id
+  attr_accessible :day, :plan_id, :position
   has_many :plan_spots
   has_many :spots, :through => :plan_spots, :order => :position
   belongs_to :plan
 
-  def unselected_candidates( request, user )
-    candidate = Candidate.where( request_id: request.id, user_id: user.id ).first
-    if candidate
-      candidate.spots - self.spots
-    else
-      []
+  def save_spots_with_position( spot_ids )
+    self.spots = []
+
+    spot_ids.each_with_index do |spot_id, idx|
+      self.plan_spots << PlanSpot.new( plan_day_id: self.id,
+                                       spot_id: spot_id,
+                                       position: idx + 1
+                                     )
     end
   end
 end

@@ -8,6 +8,7 @@ Localis::Application.routes.draw do
   get  "plan_days/show/:id"      => "plan_days#show",      :as => :plan_day
   get  "plan_days/edit/:id"      => "plan_days#edit",      :as => :edit_plan_day
   post "plan_days/:id/cand_sort" => "plan_days#cand_sort"
+  put  "plan_days/:id"           => "plan_days#update"
 
   get  "spots/new"                 => "spots#new"
   post "spots/create_unless_exist" => "spots#create_unless_exist"
