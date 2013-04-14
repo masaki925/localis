@@ -44,7 +44,7 @@ $ ->
     origin: new google.maps.LatLng(spots.find('#latitude')[0].value, spots.find('#longitude')[0].value),
     waypoints: waypoints,
     destination: new google.maps.LatLng(spots.find('#latitude')[spots.length - 1].value, spots.find('#longitude')[spots.length - 1].value),
-    travelMode: google.maps.TravelMode.TRANSIT
+    travelMode: google.maps.TravelMode.WALKING
 
   directionsService.route request, (response, status) ->
     if status is google.maps.DirectionsStatus.OK
