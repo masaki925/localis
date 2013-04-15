@@ -1,3 +1,68 @@
 // Place all the styles related to the requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar {
+    margin: 0 0 0 0;
+}
+.page-header{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0
+}
+
+div.row-fluid{
+    margin-left: auto;
+    margin-right: auto
+}
+
+p{
+    margin: 0 0 0 0;
+    font-weight: bold;
+    font-size: 150%
+}
+
+.datetime .optional{
+     padding: 0 0 0 0
+}
+
+.input{
+    padding: 15px 0 0 0
+}
+div.datetime.optional.request_deadline_datetime{
+    padding: 15px 0 20px 0
+}
+
+
+#request_spots{
+    padding: 0 0 20px 0
+}
+
+#request_people_num, #request_budget_hotel, #request_budget_meal{
+    width: 80px;
+}
+
+.input.integer.optional, div.input.float.optional{
+    margin-right: 54px;
+    float: left
+}
+
+div.input.float.optional.request_budget_meal:after{
+    content:".";
+    display:block;
+    clear:both;
+    height:0;
+    visibility:hidden
+}
+
+.form-actions{
+    padding: 10px 10px 10px 10px;
+    margin: 80px 0 0 0
+}
+.form-horizontal .form-actions{
+    padding-left: 130px;
+}
+
+input.button.btn-primary{
+    height: 50px;
+    width: 150px
+}
