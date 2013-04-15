@@ -1,7 +1,147 @@
 // Place all the styles related to the plan_days controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#map_canvas {
-  height: 1200px;
-  width: 800px;
+div#map_canvas {
+  margin: 0 !important;
+  height: 650px;
+  width: 704px
+}
+div.span9{
+  margin: 0 0 0 0 !important;
+}
+#title{
+    color: white;
+    background-color: black;
+    padding: 1px 10px 1px 10px
+}
+
+#title h1{
+    margin: 3px 0 10px 0;
+}
+
+ul.nav.nav-pills{
+    margin: 0 0 3px 0
+}
+
+.row-fluid div.span3{
+    width: 280px
+}
+
+.span3{
+    position: relative;
+    z-index: 1000 !important;
+    background-color: #f1f1f1;
+    -webkit-box-shadow: 1px 0px 6px 0px #9a9a9a;
+    -moz-box-shadow: 1px 0px 6px 0px #9A9A9A;
+    box-shadow: 1px 0px 6px 0px #9A9A9A;
+}
+
+.span3 h2{
+    color: white;
+    background-color: black;
+    padding: 1px 10px 1px 10px;
+    font-size: 1.4em;
+    margin-bottom: 0
+}
+
+.city{
+    margin: 0 30px 0 15px;
+    font-weight: lighter;
+ }
+
+
+.span3 section{
+    background-color: #fdc749;
+    -webkit-box-shadow: 0px 2px 3px 0px #9a9a9a;
+    -moz-box-shadow: 0px 2px 3px 0px #9A9A9A;
+    box-shadow: 0px 2px 3px 0px #9A9A9A
+}
+
+div.spots section, .accom-options{
+    background-color: white;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid #bebebe;
+}
+.accom-options{
+    border: 1px solid #848484;
+}
+
+.left-arrow, .date, .right-arrow, .time, .budget{
+    background-color: white;
+    margin: 15px 14px 10px 14px;
+    padding: 0px 5px 0px 5px;
+    float: left;
+    text-align: center;
+}
+div.date{
+    width: 124px;
+    margin: 10px 14px 5px 14px;
+    padding: 5px 15px 5px 15px;
+}
+.time, .budget{
+    width: 80px;
+    padding: 0 15px 0 15px;
+}
+
+span.hour{
+    margin-right: 10px
+}
+span.currency{
+    margin-left: 10px
+}
+
+section:after, .spots:after{
+    content:".";
+    display:block;
+    clear:both;
+    height:0;
+    visibility:hidden
+}
+
+.accom-options{
+    background-color: white;
+    width: 170px;
+    margin: 20px 40px 20px 40px;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+    text-align: center;
+}
+.spots section{
+    width: 240px;
+    margin: 5px auto 20px auto;
+}
+.morning{
+}
+.number{
+    background-color:  #fdc749;
+    text-align: center;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 7px 7px 0px 0px;
+    border-radius: 7px 7px 0px 0px
+}
+
+.pict, .spots h3, .category, .star, .tags{
+    margin: 0 10px 0 10px;
+    font-size: 1em;
+    line-height: 20px;
+}
+.spots details{
+    text-align: right;
+    margin-right: 10px
+}
+
+.spots .time, .spots .budget{
+    width: 60px;
+    margin: 5px 15px 5px 15px;
+    float: left;
+    text-align: center;
+}
+
+.night{
+
 }
